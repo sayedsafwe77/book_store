@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('code')->unique();
             $table->unsignedSmallInteger('quantity');
-            $table->float('percentage');
+            $table->decimal('percentage',5,2);
             $table->datetime('expiry_date');
             $table->timestamps();
         });
