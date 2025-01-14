@@ -90,8 +90,8 @@ class GenerateCrud extends Command
 
     protected function generateTranslations($lowerName)
     {
-        $langPathEn = resource_path("lang/en/{$lowerName}.php");
-        $langPathAr = resource_path("lang/ar/{$lowerName}.php");
+        $langPathEn = app_path("lang/en/{$lowerName}.php");
+        $langPathAr = app_path("lang/ar/{$lowerName}.php");
         $stub = File::get(resource_path('stubs/translation.stub'));
 
         File::put($langPathEn, $stub);
