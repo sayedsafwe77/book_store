@@ -21,9 +21,11 @@ class GenerateCrud extends Command
         $name = Str::studly($this->argument('name'));
         $lowerName = Str::snake($name);
         $pluralName = Str::pluralStudly($name);
-
+        dd($lowerName,$pluralName);
         // Generate Controller
         $this->generateController($name, $pluralName);
+
+        $this->generateRequest($name, $pluralName);
 
         // Generate Views
         $this->generateViews($lowerName);
@@ -86,6 +88,15 @@ class GenerateCrud extends Command
         $content = str_replace('{{modelName}}', $name, $stub);
         File::put($filterPath, $content);
         $this->info("Filter created: {$filterPath}");
+    }
+    protected function generateRequest($name)
+    {
+        $requestPath = app_path("Http/Requests/{$name}Request.php");
+        $stub = File::get(resource_path('stubs/request.stub'));
+
+        $content = str_replace('{{modelName}}', $name, $stub);
+        File::put($requestPath, $content);
+        $this->info("Request created: {$requestPath}");
     }
 
     protected function generateTranslations($lowerName)
