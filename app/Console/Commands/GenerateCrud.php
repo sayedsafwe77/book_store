@@ -27,7 +27,7 @@ class GenerateCrud extends Command
         $this->generateRequest($name, $pluralName);
 
         // Generate Views
-        $this->generateViews($name,$lowerName);
+        $this->generateViews($lowerName);
 
         // Add Route
         $this->addRoute($lowerName);
@@ -58,7 +58,7 @@ class GenerateCrud extends Command
         $this->info("Controller created: {$controllerPath}");
     }
 
-    protected function generateViews($name,$lowerName)
+    protected function generateViews($lowerName)
     {
         $viewsPath = resource_path("views/dashboard/{$lowerName}");
         File::ensureDirectoryExists($viewsPath);
@@ -67,7 +67,7 @@ class GenerateCrud extends Command
         foreach ($stubs as $stub) {
             $stubContent = File::get(resource_path("stubs/{$stub}.stub"));
             $viewPath = "{$viewsPath}/{$stub}.blade.php";
-            $content = str_replace('{{modelName}}',$name,$stubContent);
+            $content = str_replace('{{modelName}}',$lowerName,$stubContent);
             File::put($viewPath, $content);
             $this->info("View created: {$viewPath}");
         }
