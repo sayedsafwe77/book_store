@@ -1,6 +1,7 @@
 @extends('dashboard.layout')
 @section('title', 'Category')
 
+
 @section('content_header')
     <x-header :title="__('adminlte::adminlte.' . capitalize(last(generate_breadcrumbs())['text']))">
         <x-slot:actions>

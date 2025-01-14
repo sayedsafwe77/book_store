@@ -312,7 +312,6 @@ return [
         [
             'text' => 'Language',
             'topnav_right' => true,
-            // 'icon' => 'flag-icon flag-icon-eg',
             'submenu' => [
                 [
                     'text'=>'English',
@@ -326,6 +325,7 @@ return [
                 ]
             ]
         ],
+
         // Sidebar items:
         [
             'type' => 'sidebar-menu-search',
@@ -393,6 +393,21 @@ return [
                 [
                     'text' => 'create author',
                     'url' => 'dashboard/author/create',
+                ],
+            ]
+        ],
+        [
+            'text' => 'FlashSale',
+            'url' => 'dashboard/flash_sale',
+            'icon' => 'fas fa-bolt',
+            'submenu' => [
+                [
+                    'text' => 'FlashSale',
+                    'url' => 'dashboard/flash_sale',
+                ],
+                [
+                    'text' => 'create flash_sale',
+                    'url' => 'dashboard/flash_sale/create',
                 ],
             ]
         ],

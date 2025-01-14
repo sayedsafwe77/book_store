@@ -16,4 +16,7 @@ return [
     'important' => 'Important',
     'warning' => 'Warning',
     'information' => 'Information',
+    'FlashSale' => 'flash sale',
+    'create flash_sale' => 'Create Flash Sale'
+
 ];

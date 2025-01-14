@@ -30,5 +30,7 @@ return [
     'publishers' => 'النشار',
     'publisher' => 'الناشر',
     'authors' => 'المؤلفون',
+    'flash_sale' => 'العروض',
+    'flash_sales' => 'العروض',
 
 ];

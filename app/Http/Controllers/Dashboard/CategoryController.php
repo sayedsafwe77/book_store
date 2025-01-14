@@ -26,7 +26,6 @@ class CategoryController extends Controller
     }
     function store(CategoryRequest $request)  {
         $category = Category::create($request->except('_token'));
-
         $category->addMediaFromRequest('image')
         ->toMediaCollection('image');
 

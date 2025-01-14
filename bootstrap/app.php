@@ -22,9 +22,14 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->appendToGroup('dashboard', [
             'auth:admin',
-            SetLocale::class,
+            SetLocale::class
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
     })->create();
+
+
+
+    // setLocal
+    // session

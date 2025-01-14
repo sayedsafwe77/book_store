@@ -39,5 +39,7 @@ return [
     'publisher' => 'publisher',
     'authors' => 'authors',
     'Author' => 'authors',
+    'flash_sale' => 'flash sales',
+    'flash_sales' => 'flash sales',
 
 ];
