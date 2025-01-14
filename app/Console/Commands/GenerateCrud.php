@@ -46,11 +46,12 @@ class GenerateCrud extends Command
     protected function generateController($name, $pluralName)
     {
         $controllerPath = app_path("Http/Controllers/Dashboard/{$name}Controller.php");
+        $resourceName = Str::lower($name);
         $stub = File::get(resource_path('stubs/controller.stub'));
 
         $content = str_replace(
-            ['{{modelName}}', '{{modelPlural}}'],
-            [$name, $pluralName],
+            ['{{modelName}}', '{{modelPlural}}','{{resourceName}}'],
+            [$name, $pluralName,$resourceName],
             $stub
         );
 

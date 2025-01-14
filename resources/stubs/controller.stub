@@ -19,20 +19,20 @@ class {{modelName}}Controller extends Controller
     }
     public function store({{modelName}}Request $request) {
         {{modelName}}::create($request->except('_token'));
-        return redirect()->route('dashboard.{{modelName}}.index');
+        return redirect()->route('dashboard.{{resourceName}}.index');
     }
-    public function show({{modelName}} ${{modelName}}) {
-        return view('dashboard.{{modelName}}.show',compact('{{modelName}}'));
+    public function show({{modelName}} ${{resourceName}}) {
+        return view('dashboard.{{resourceName}}.show',compact('{{resourceName}}'));
     }
-    public function edit({{modelName}} ${{modelName}}) {
-        return view('dashboard.{{modelName}}.edit',compact('{{modelName}}'));
+    public function edit({{modelName}} ${{resourceName}}) {
+        return view('dashboard.{{resourceName}}.edit',compact('{{resourceName}}'));
     }
-    public function update({{modelName}}Request $request, {{modelName}} ${{modelName}}) {
-        ${{modelName}}->update($request->validated());
-        return redirect()->route('dashboard.{{modelName}}.index');
+    public function update({{modelName}}Request $request, {{modelName}} ${{resourceName}}) {
+        ${{resourceName}}->update($request->validated());
+        return redirect()->route('dashboard.{{resourceName}}.index');
      }
-    public function destroy({{modelName}} ${{modelName}}) {
-        ${{modelName}}->delete();
-        return redirect()->route('dashboard.{{modelName}}.index');
+    public function destroy({{modelName}} ${{resourceName}}) {
+        ${{resourceName}}->delete();
+        return redirect()->route('dashboard.{{resourceName}}.index');
     }
 }
