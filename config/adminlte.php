@@ -381,6 +381,21 @@ return [
                 ],
             ]
         ],
+        [
+            'text' => 'Author',
+            'url' => 'dashboard/author',
+            'icon' => 'fas fa-pen-nib',
+            'submenu' => [
+                [
+                    'text' => 'Author',
+                    'url' => 'dashboard/author',
+                ],
+                [
+                    'text' => 'create author',
+                    'url' => 'dashboard/author/create',
+                ],
+            ]
+        ],
         // ['header' => 'account_settings'],
         // [
         //     'text' => 'profile',

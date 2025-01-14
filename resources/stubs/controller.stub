@@ -15,7 +15,7 @@ class {{modelName}}Controller extends Controller
         return view('dashboard.{{modelName}}.index',compact('{{modelPlural}}'));
      }
     public function create() {
-        return view('dashboard.publisher.create');
+        return view('dashboard.{{modelName}}.create');
     }
     public function store({{modelName}}Request $request) {
         {{modelName}}::create($request->except('_token'));

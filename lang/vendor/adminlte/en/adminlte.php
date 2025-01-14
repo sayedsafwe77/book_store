@@ -37,5 +37,7 @@ return [
     "Discount" => 'Discount',
     'publishers' => 'publishers',
     'publisher' => 'publisher',
+    'authors' => 'authors',
+    'Author' => 'authors',
 
 ];

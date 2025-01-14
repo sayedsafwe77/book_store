@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\AuthorController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\DiscountController;
 use App\Http\Controllers\Dashboard\HomeController;
@@ -14,6 +15,7 @@ Route::middleware('dashboard')->group(function(){
     Route::resource('discount',DiscountController::class);
     Route::resource('category',CategoryController::class);
     Route::resource('publisher',PublisherController::class);
+    Route::resource('author', AuthorController::class);
 
     Route::post('/add/discount/{category}',[CategoryController::class,'addDiscount'])->name('category.add.discount');
 

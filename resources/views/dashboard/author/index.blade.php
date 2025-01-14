@@ -1,43 +1,43 @@
 @extends('dashboard.layout')
-@section('title', '{{modelName}}')
+@section('title', 'Author')
 
 @section('content_header')
     <x-header :title="__('adminlte::adminlte.' . capitalize(last(generate_breadcrumbs())['text']))">
         <x-slot:actions>
-            <a href="{{ route('dashboard.{{modelName}}.create') }}" class="btn btn-success btn-lg">
+            <a href="{{ route('dashboard.author.create') }}" class="btn btn-success btn-lg">
                 <i class="fas fa-plus"></i>
                 {{ __('actions.create') }}
             </a>
         </x-slot:actions>
     </x-header>
     <x-breadcrumb :breadcrumbs="generate_breadcrumbs()" />
-    @include('dashboard.{{modelName}}.partials.filter')
+    @include('dashboard.author.partials.filter')
 @stop
 
 @section('content')
     <table class="table">
         <thead>
             <tr>
-                <th>{{ __('{{modelName}}.id') }}</th>
-                <th>{{ __('{{modelName}}.name') }}</th>
+                <th>{{ __('author.id') }}</th>
+                <th>{{ __('author.name') }}</th>
                 <th>{{ __('actions.created_at') }}</th>
                 <th>{{ __('actions.updated_at') }}</th>
                 <th>{{ __('actions.actions') }}</th>
             </tr>
         </thead>
         <tbody>
-            @foreach(${{modelPlural}} as ${{modelName}})
+            @foreach($authors as $author)
                 <tr>
-                    <td> {{ ${{modelName}}->id }}</td>
-                    <td> {{ ${{modelName}}->name }}</td>
-                    <td> {{ ${{modelName}}->created_at }}</td>
-                    <td> {{ ${{modelName}}->updated_at }}</td>
+                    <td> {{ $author->id }}</td>
+                    <td> {{ $author->name }}</td>
+                    <td> {{ $author->created_at }}</td>
+                    <td> {{ $author->updated_at }}</td>
                     <td class="d-flex">
-                        @include('dashboard.partials.actions',['resource_name' => '{{modelName}}','resource' => ${{modelName}}->id])
+                        @include('dashboard.partials.actions',['resource_name' => 'author','resource' => $author->id])
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
-    {{${{modelPlural}}->links()}}
+    {{$authors->links()}}
 @stop

@@ -29,5 +29,6 @@ return [
     'edit' => 'تعديل',
     'publishers' => 'النشار',
     'publisher' => 'الناشر',
+    'authors' => 'المؤلفون',
 
 ];
