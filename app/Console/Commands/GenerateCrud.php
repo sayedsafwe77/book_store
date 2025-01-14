@@ -21,7 +21,6 @@ class GenerateCrud extends Command
         $name = Str::studly($this->argument('name'));
         $lowerName = Str::snake($name);
         $pluralName = Str::pluralStudly($name);
-        dd($lowerName,$pluralName);
         // Generate Controller
         $this->generateController($name, $pluralName);
 
@@ -75,7 +74,8 @@ class GenerateCrud extends Command
 
     protected function addRoute($lowerName)
     {
-        $route = "Route::resource('{$lowerName}', '{$lowerName}Controller');\n";
+        $capitalized = Str::ucfirst($lowerName);
+        $route = "Route::resource('{$lowerName}', {$capitalized}Controller::class);\n";
         File::append(base_path('routes/dashboard.php'), $route);
         $this->info("Route added: {$route}");
     }
