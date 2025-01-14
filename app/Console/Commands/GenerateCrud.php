@@ -84,7 +84,7 @@ class GenerateCrud extends Command
 
     protected function generateFilter($name)
     {
-        $filterPath = app_path("Filters/{$name}Filter.php");
+        $filterPath = app_path("ModelFilters/{$name}Filter.php");
         $stub = File::get(resource_path('stubs/filter.stub'));
 
         $content = str_replace('{{modelName}}', $name, $stub);
