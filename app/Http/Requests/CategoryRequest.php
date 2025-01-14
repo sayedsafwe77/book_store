@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Models\Discount;
+use App\Rules\ImageOrStringRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -24,7 +25,9 @@ class CategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|min:5|max:255',
+            'name.en' => 'required|string|min:5|max:255',
+            'name.ar' => 'required|string|min:5|max:255',
+            'image' => ['required',new ImageOrStringRule],
         ];
     }
 }

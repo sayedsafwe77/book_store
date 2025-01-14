@@ -1,21 +1,21 @@
-@extends('adminlte::page')
+@extends('dashboard.layout')
 
 @section('title', 'Dashboard')
 
-@section('content_header')
-    <h1>category -> edit</h1>
-@stop
 
 @section('content')
-    <form action="{{route('dashboard.category.update',$category->id)}}" method="post">
+    <form action="{{route('dashboard.category.update',$category->id)}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
-        <div class="row">
-            <x-adminlte-input name="name" label="name" type="text" value="{{$category->name}}"
-                fgroup-class="col-md-6" />
+            <x-adminlte-input name="name[en]" label="{{__('category.category_name_en')}}" value="{{$category->getTranslation('name','en')}}" type="text" placeholder="ex: ******"
+            fgroup-class="col-md-4" />
 
-            <x-adminlte-button theme="outline-primary" class="btn-lg mx-auto" type="submit" label="Save!"/>
-        </div>
+            <x-adminlte-input name="name[ar]" label="{{__('category.category_name_ar')}}" value="{{$category->getTranslation('name','ar')}}" type="text" placeholder="ex: ******"
+            fgroup-class="col-md-4" />
+
+            <x-image-preview name='image' value="{{$category->getFirstMediaUrl('image')}}" />
+
+            <x-adminlte-button theme="outline-primary" class="btn-lg mx-auto" type="submit" label="{{__('actions.Save')}}"/>
     </form>
 
     @stop

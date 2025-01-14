@@ -6,11 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\DiscountRequest;
 use App\Models\Discount;
 use Illuminate\Http\Request;
+use Illuminate\Support\Pluralizer;
 
 class DiscountController extends Controller
 {
     function index()  {
-        $discounts = Discount::orderBy('id','DESC')->paginate();
+        $discounts = Discount::filter(request()->all())->orderBy('id','DESC')->paginate();
         return view('dashboard.discount.index',compact('discounts'));
     }
     function show($id)  {

@@ -1,0 +1,26 @@
+/* Base direction for the entire document */
+body {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Reverse float alignment */
+.nav{
+    padding: 0 !important;
+}
+.ml-auto, .mx-auto{
+    margin-right: auto !important;
+    margin-left: 0 !important;
+}
+@media (min-width: 768px) {
+    body:not(.sidebar-mini-md):not(.sidebar-mini-xs):not(.layout-top-nav) .content-wrapper, body:not(.sidebar-mini-md):not(.sidebar-mini-xs):not(.layout-top-nav) .main-footer, body:not(.sidebar-mini-md):not(.sidebar-mini-xs):not(.layout-top-nav) .main-header{
+        margin-right: 250px;
+        margin-left: 0px;
+    }
+}
+@media (min-width: 992px) {
+    .sidebar-mini.sidebar-collapse .content-wrapper, .sidebar-mini.sidebar-collapse .main-footer, .sidebar-mini.sidebar-collapse .main-header {
+        margin-right: 4.6rem !important;
+        margin-left: 0 !important;
+    }
+}

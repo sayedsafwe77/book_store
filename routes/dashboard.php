@@ -3,27 +3,20 @@
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\DiscountController;
 use App\Http\Controllers\Dashboard\HomeController;
+use App\Http\Controllers\Dashboard\PublisherController;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 
-
-Route::middleware('auth:admin')->group(function(){
+Route::middleware('dashboard')->group(function(){
     Route::get('/',[HomeController::class,'index']);
 
     Route::resource('discount',DiscountController::class);
     Route::resource('category',CategoryController::class);
+    Route::resource('publisher',PublisherController::class);
 
     Route::post('/add/discount/{category}',[CategoryController::class,'addDiscount'])->name('category.add.discount');
 
-    // Route::prefix('discount')->name('discount.')->group(function(){
-    //     Route::get('/',[DiscountController::class,'index'])->name('index');
-    //     Route::get('/create',[DiscountController::class,'create'])->name('create');
-    //     Route::get('/{id}',[DiscountController::class,'show'])->name('show');
-    //     Route::post('/',[DiscountController::class,'store'])->name('store');
-
-    //     Route::get('/edit/{discount}',[DiscountController::class,'edit'])->name('edit');
-
-    //     Route::put('/edit/{discount}',[DiscountController::class,'update'])->name('update');
-
-    //     Route::delete('/{discount:code}',[DiscountController::class,'destroy'])->name('destroy');
-    // });
+    Route::get('change-language/{lang}', [HomeController::class,'changeLanguage'])->name('change.language');
 });
+

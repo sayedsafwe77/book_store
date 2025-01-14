@@ -26,4 +26,16 @@ return [
     'verify_request_another' => 'click here to request another',
     'confirm_password_message' => 'Please, confirm your password to continue.',
     'remember_me_hint' => 'Keep me authenticated indefinitely or until I manually logout',
+    "name" => 'name',
+    'create' => 'create',
+    'Dashboard' => 'Dashboard',
+    'categories'=> 'categories',
+    'Category'=> 'categories',
+    'discounts' => 'Discounts',
+    'upload_image' => 'Upload Image',
+    'edit' => 'edit',
+    "Discount" => 'Discount',
+    'publishers' => 'publishers',
+    'publisher' => 'publisher',
+
 ];

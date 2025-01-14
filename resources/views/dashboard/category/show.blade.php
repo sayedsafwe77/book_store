@@ -1,10 +1,7 @@
-@extends('adminlte::page')
+@extends('dashboard.layout')
 
 @section('title', 'Dashboard')
 
-@section('content_header')
-    <h1>category -> {{ $category->name }}</h1>
-@stop
 
 @section('content')
     <h1>{{$category->name}}</h1>

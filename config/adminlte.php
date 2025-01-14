@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => 'BookStore',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -302,18 +302,34 @@ return [
         // Navbar items:
         [
             'type' => 'navbar-search',
-            'text' => 'search',
+            'text' => 'Search',
             'topnav_right' => true,
         ],
         [
             'type' => 'fullscreen-widget',
             'topnav_right' => true,
         ],
-
+        [
+            'text' => 'Language',
+            'topnav_right' => true,
+            // 'icon' => 'flag-icon flag-icon-eg',
+            'submenu' => [
+                [
+                    'text'=>'English',
+                    'icon' => 'flag-icon flag-icon-us',
+                    'url'=> '/dashboard/change-language/en'
+                ],
+                [
+                    'text'=>'Arabic',
+                    'icon' => 'flag-icon flag-icon-eg',
+                    'url'=> '/dashboard/change-language/ar'
+                ]
+            ]
+        ],
         // Sidebar items:
         [
             'type' => 'sidebar-menu-search',
-            'text' => 'search',
+            'text' => 'Search',
         ],
         [
             'text' => 'blog',
@@ -321,14 +337,49 @@ return [
             'can' => 'manage-blog',
         ],
         [
-            'text' => 'Discounts',
+            'text' => 'Discount',
             'url' => 'dashboard/discount',
-            'icon' => 'fas fa-percent',
+            'icon' => 'fas fa-tag',
+            'submenu' => [
+                [
+                    'text' => 'Discount',
+                    'url' => 'dashboard/discount',
+                ],
+                [
+                    'text' => 'create discount',
+                    'url' => 'dashboard/discount/create',
+                ],
+            ]
         ],
         [
             'text' => 'Category',
             'url' => 'dashboard/category',
-            'icon' => 'fas fa-percent',
+            'icon' => 'fas fa-list',
+            'submenu' => [
+                [
+                    'text' => 'Category',
+                    'url' => 'dashboard/category',
+                ],
+                [
+                    'text' => 'create category',
+                    'url' => 'dashboard/category/create',
+                ],
+            ]
+        ],
+        [
+            'text' => 'Publisher',
+            'url' => 'dashboard/publisher',
+            'icon' => 'fas fa-book-open',
+            'submenu' => [
+                [
+                    'text' => 'Publisher',
+                    'url' => 'dashboard/publisher',
+                ],
+                [
+                    'text' => 'create publisher',
+                    'url' => 'dashboard/publisher/create',
+                ],
+            ]
         ],
         // ['header' => 'account_settings'],
         // [
@@ -499,6 +550,16 @@ return [
                     'type' => 'js',
                     'asset' => false,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js',
+                ],
+            ],
+        ],
+        'FlagIconCSS' => [
+            'active' => true, // Set to true to enable the plugin
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/flag-icon-css/css/flag-icons.min.css',
                 ],
             ],
         ],

@@ -7,11 +7,12 @@ use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
 use App\Models\Discount;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CategoryController extends Controller
 {
     function index()  {
-        $categories = Category::orderBy('id','DESC')->paginate();
+        $categories = Category::filter(request()->all())->orderBy('id','DESC')->paginate();
         return view('dashboard.category.index',compact('categories'));
     }
 
@@ -24,7 +25,11 @@ class CategoryController extends Controller
         return view('dashboard.category.create');
     }
     function store(CategoryRequest $request)  {
-        Category::create($request->except('_token'));
+        $category = Category::create($request->except('_token'));
+
+        $category->addMediaFromRequest('image')
+        ->toMediaCollection('image');
+
         return redirect()->route('dashboard.category.index');
     }
     function destroy(Category $category)  {
@@ -37,6 +42,11 @@ class CategoryController extends Controller
     }
 
     function update(CategoryRequest $request,Category $category)  {
+        if($request->hasFile('image')){
+            $category->clearMediaCollection('image');
+            $category->addMediaFromRequest('image')
+            ->toMediaCollection('image');
+        }
         $category->update($request->validated());
         return redirect()->route('dashboard.category.index');
     }
