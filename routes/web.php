@@ -9,7 +9,6 @@ Route::get('/', function () {
 
 Route::get('/home',[HomeController::class,'index']);
 
-Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

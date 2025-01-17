@@ -16,8 +16,9 @@ class Category extends Model implements HasMedia
     use HasFactory,HasTranslations,Filterable,InteractsWithMedia;
     protected $fillable = ['name','discount_id'];
     public $translatable = ['name'];
+    protected $casts = ['name' => 'array'];
 
-    public function registerMediaConversions(?Media $media = null): void
+    public function registerMediaConversions(Media $media = null): void
     {
         $this
             ->addMediaConversion('preview')

@@ -16,9 +16,15 @@
 @stop
 
 @section('content')
+    <div class="d-flex col-3 justify-content-around my-2">
+        <x-delete-selected model="Discount" />
+        <x-import-excel model="Discount" />
+    </div>
+
     <table class="table">
         <thead>
             <tr>
+                <th><input type="checkbox" id="select-all"></th>
                 <th>{{ __('discount.id')}}</th>
                 <th>{{ __('discount.code')}}</th>
                 <th>{{ __('discount.quantity')}}</th>
@@ -32,6 +38,7 @@
         <tbody>
             @foreach($discounts as $discount)
                 <tr>
+                    <td><input type="checkbox" class="row-checkbox" value="{{ $discount->id }}"></td>
                     <td> {{ $discount->id }}</td>
                     <td> {{ $discount->code }}</td>
                     <td> {{ $discount->quantity }}</td>

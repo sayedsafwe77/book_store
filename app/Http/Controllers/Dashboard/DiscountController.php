@@ -23,7 +23,7 @@ class DiscountController extends Controller
     }
     function store(DiscountRequest $request)  {
         Discount::create($request->except('_token'));
-        return redirect()->route('dashboard.discount.index');
+        return redirect()->route('dashboard.discount.index')->with('success','discount created succefully');
     }
     function destroy(Discount $discount)  {
         $discount->delete();

@@ -16,9 +16,16 @@
 @stop
 
 @section('content')
+    <div class="d-flex col-3 justify-content-around my-2">
+        <x-delete-selected model="Category" />
+        <x-import-excel model="Category" />
+        <x-export-excel model="Category" />
+    </div>
+
     <table class="table">
         <thead>
             <tr>
+                <th><input type="checkbox" id="select-all"></th>
                 <th>{{ __('category.id') }}</th>
                 <th>image</th>
                 <th>{{ __('category.category_name_en') }}</th>
@@ -32,6 +39,7 @@
         <tbody>
             @foreach($categories as $category)
                 <tr>
+                    <td><input type="checkbox" class="row-checkbox" value="{{ $category->id }}"></td>
                     <td> {{ $category->id }}</td>
                     <td>
                         @if ($category->getFirstMediaUrl('image','preview'))

@@ -1,8 +1,6 @@
 const codeElement = document.querySelector('input[name=code]');
 
-document.addEventListener('DOMContentLoaded', function () {
 
-});
 
 if(codeElement){
     addGeneratedDiscountCode();
@@ -41,3 +39,46 @@ function addGeneratedDiscountCode(){
         return code;
     }
 }
+
+
+const deleteBtn = document.getElementById('delete-btn');
+if(deleteBtn){
+    deleteBtn.addEventListener('click', function (event) {
+        event.preventDefault();
+        const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: "btn btn-success",
+            cancelButton: "btn btn-danger"
+        },
+        buttonsStyling: false
+        });
+        swalWithBootstrapButtons.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true
+        }).then((result) => {
+        if (result.isConfirmed) {
+            swalWithBootstrapButtons.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success"
+            }).then(() => {
+            document.querySelector('#delete-form').submit();
+        });
+        } else if (
+            result.dismiss === Swal.DismissReason.cancel
+        ) {
+            swalWithBootstrapButtons.fire({
+            title: "Cancelled",
+            text: "Your imaginary file is safe :)",
+            icon: "error"
+            });
+        }
+        });
+    });
+}
+

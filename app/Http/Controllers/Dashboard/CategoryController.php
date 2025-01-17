@@ -4,10 +4,14 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
+use App\Imports\CategoryImport;
 use App\Models\Category;
 use App\Models\Discount;
+use DragonCode\Support\Facades\Filesystem\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CategoryController extends Controller
 {
@@ -26,10 +30,11 @@ class CategoryController extends Controller
     }
     function store(CategoryRequest $request)  {
         $category = Category::create($request->except('_token'));
+
         $category->addMediaFromRequest('image')
         ->toMediaCollection('image');
 
-        return redirect()->route('dashboard.category.index');
+        return redirect()->route('dashboard.category.index')->with('success','category created successfully');
     }
     function destroy(Category $category)  {
         $category->delete();
@@ -56,4 +61,7 @@ class CategoryController extends Controller
         $category->update(['discount_id' => $request->discount_id]);
         return redirect()->route('dashboard.category.index');
     }
+
+
+
 }

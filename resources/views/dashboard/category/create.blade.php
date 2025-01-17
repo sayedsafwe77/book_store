@@ -12,6 +12,8 @@
             <x-adminlte-input name="name[ar]" label="{{__('category.category_name_ar')}}" value="{{ old('name.ar')}}" type="text" placeholder="ex: ******"
                 fgroup-class="col-md-4" />
 
+
+
             <x-image-preview name='image' />
         </div>
 
