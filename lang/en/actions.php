@@ -14,5 +14,7 @@ return [
     "updated_at" => 'updated_at',
     'Save' => 'Save',
     'no_items_selected' => 'No items selected',
-
+   'choose'=> 'Choose One',
+   'dont_have_data'=> 'Sorry, no data available. !'
+ 
 ];

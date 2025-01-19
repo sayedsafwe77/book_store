@@ -7,6 +7,7 @@ return [
     'create discount' => 'انشاء خصم',
     'create category' => 'انشاء فئه',
     'FlashSale' => 'العروض',
-    'create flash_sale' => 'انشاء عرض'
+    'create flash_sale' => 'انشاء عرض',
+    'order' => 'Orders',
 
 ];
