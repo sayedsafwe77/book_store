@@ -14,12 +14,18 @@
     @include('dashboard.author.partials.filter')
 @stop
 
+@session('success')
+    {{ session('success') }}
+@endsession
+
 @section('content')
+
     <table class="table">
         <thead>
             <tr>
                 <th>{{ __('author.id') }}</th>
                 <th>{{ __('author.name') }}</th>
+                <th>{{ __('author.image') }}</th>
                 <th>{{ __('actions.created_at') }}</th>
                 <th>{{ __('actions.updated_at') }}</th>
                 <th>{{ __('actions.actions') }}</th>
@@ -27,9 +33,19 @@
         </thead>
         <tbody>
             @foreach($authors as $author)
+            
                 <tr>
                     <td> {{ $author->id }}</td>
                     <td> {{ $author->name }}</td>
+                    <td>
+                       
+
+                        @if ($author->getFirstMediaUrl('image','preview'))
+                            <img src="{{asset('').parse_url($author->getFirstMediaUrl('image','preview'), PHP_URL_PATH)}}"
+                                alt="Thumbnail"
+                                style="width:50px; height:50px; object-fit: contain;">
+                        @endif
+                    </td>
                     <td> {{ $author->created_at }}</td>
                     <td> {{ $author->updated_at }}</td>
                     <td class="d-flex">
@@ -37,7 +53,9 @@
                     </td>
                 </tr>
             @endforeach
+            
         </tbody>
     </table>
+
     {{$authors->links()}}
 @stop
