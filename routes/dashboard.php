@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Dashboard\AuthorController;
 use App\Http\Controllers\Dashboard\CategoryController;
+use App\Http\Controllers\Dashboard\ContactUsController;
 use App\Http\Controllers\Dashboard\DiscountController;
 use App\Http\Controllers\Dashboard\ExportController;
 use App\Http\Controllers\Dashboard\FlashSaleController;
@@ -22,6 +23,7 @@ Route::middleware('dashboard')->group(function(){
     Route::resource('author', AuthorController::class);
     Route::resource('category',CategoryController::class);
     Route::resource('flash_sale',FlashSaleController::class);
+    Route::resource('contact_us',ContactUsController::class);
 
     Route::post('/add/discount/{category}',[CategoryController::class,'addDiscount'])->name('category.add.discount');
 
