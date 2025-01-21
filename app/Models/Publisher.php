@@ -11,10 +11,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Publisher extends Model implements HasMedia
-
-use App\Models\Book;
-class Publisher extends Model
-
 {
     /** @use HasFactory<\Database\Factories\PublisherFactory> */
     use HasFactory,Filterable, InteractsWithMedia;
