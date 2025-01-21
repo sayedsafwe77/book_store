@@ -11,7 +11,20 @@ class FlashSale extends Model
 {
     /** @use HasFactory<\Database\Factories\FlashSaleFactory> */
     use HasFactory,HasTranslations,Filterable;
-    protected $fillable = ['name','description','date','time','is_active'];
+
+    /**
+     * Mass-assignable attributes.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name',
+        'description',
+        'date',
+        'time',
+        'is_active',
+    ];
+
     public $translatable = ['name','description'];
 
     protected $casts = ['name' => 'array','description' => 'array'];
