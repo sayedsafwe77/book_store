@@ -58,5 +58,5 @@
             @endforeach
         </tbody>
     </table>
-    {{ $orders->links() }}
+    {{ $orders->appends(request()->query())->links()}}
 @stop
