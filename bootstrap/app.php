@@ -24,6 +24,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'auth:admin',
             SetLocale::class
         ]);
+        $middleware->redirectGuestsTo('dashboard/login');
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

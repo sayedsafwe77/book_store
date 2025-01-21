@@ -32,5 +32,6 @@ return [
     'authors' => 'المؤلفون',
     'flash_sale' => 'العروض',
     'flash_sales' => 'العروض',
-
+    'books' => 'الكُتب',
+    'book' => 'الكتاب'
 ];
