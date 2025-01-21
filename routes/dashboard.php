@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\AdminController;
 use App\Http\Controllers\Dashboard\AuthorController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\ContactUsController;
@@ -9,7 +10,7 @@ use App\Http\Controllers\Dashboard\FlashSaleController;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\ImportExcelController;
 use App\Http\Controllers\Dashboard\PublisherController;
-use App\View\Components\ImportExcel;
+use App\Http\Controllers\Dashboard\BookController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,8 @@ Route::middleware('dashboard')->group(function(){
     Route::resource('category',CategoryController::class);
     Route::resource('flash_sale',FlashSaleController::class);
     Route::resource('contact_us',ContactUsController::class);
+    Route::resource('admin',AdminController::class);
+    Route::resource('book',BookController::class);
 
     Route::post('/add/discount/{category}',[CategoryController::class,'addDiscount'])->name('category.add.discount');
 
