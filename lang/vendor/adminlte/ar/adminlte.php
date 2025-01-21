@@ -32,7 +32,9 @@ return [
     'authors' => 'المؤلفون',
     'flash_sale' => 'العروض',
     'flash_sales' => 'العروض',
+
     'Admin' => 'المدراء',
     'admins' => 'المدراء',
-
+    'books' => 'الكُتب',
+    'book' => 'الكتاب'
 ];
