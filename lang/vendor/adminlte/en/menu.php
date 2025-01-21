@@ -17,7 +17,7 @@ return [
     'warning' => 'Warning',
     'information' => 'Information',
     'FlashSale' => 'flash sale',
-    'create flash_sale' => 'Create Flash Sale',
+    'create flash_sale' => 'Create Flash Sale'
     'contact us' => 'contact us',
     'create contact us' => 'send massage'
 ];

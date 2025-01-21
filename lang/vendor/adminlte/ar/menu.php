@@ -8,6 +8,7 @@ return [
     'create category' => 'انشاء فئه',
     'FlashSale' => 'العروض',
     'create flash_sale' => 'انشاء عرض',
+    'order' => 'Orders',
     'contact us'=>'تواصل معنا',
     'create contact us' => 'أرسال رسالة'
     'Admin Management' => 'إدارة المدراء',

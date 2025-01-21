@@ -22,9 +22,9 @@ return [
     'Dashboard' => 'الصفحه الرئيسيه',
     'create' => 'انشاء',
     "name" => 'الاسم',
-    'Category'=> 'الفئات',
+    'Category' => 'الفئات',
     "Discount" => 'الخصومات',
-    'categories'=> 'الفئات',
+    'categories' => 'الفئات',
     'upload_image' => 'صوره',
     'edit' => 'تعديل',
     'publishers' => 'النشار',
@@ -32,6 +32,7 @@ return [
     'authors' => 'المؤلفون',
     'flash_sale' => 'العروض',
     'flash_sales' => 'العروض',
+    'orders' => 'الطلبات',
     'contact_us'=>'تواصل معنا',
     'Contact_us'=>'تواصل معنا',
     "contact_uses" => 'تواصل معنا',
@@ -40,4 +41,6 @@ return [
     'admins' => 'المدراء',
     'books' => 'الكُتب',
     'book' => 'الكتاب'
+
 ];
+

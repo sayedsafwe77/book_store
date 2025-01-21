@@ -316,14 +316,14 @@ return [
             'topnav_right' => true,
             'submenu' => [
                 [
-                    'text'=>'English',
+                    'text' => 'English',
                     'icon' => 'flag-icon flag-icon-us',
-                    'url'=> '/dashboard/change-language/en'
+                    'url' => '/dashboard/change-language/en'
                 ],
                 [
-                    'text'=>'Arabic',
+                    'text' => 'Arabic',
                     'icon' => 'flag-icon flag-icon-eg',
-                    'url'=> '/dashboard/change-language/ar'
+                    'url' => '/dashboard/change-language/ar'
                 ]
             ]
         ],
@@ -411,6 +411,21 @@ return [
                 [
                     'text' => 'create flash_sale',
                     'url' => 'dashboard/flash_sale/create',
+                ],
+            ]
+        ],
+        [
+            'text' => 'Order',
+            'url' => 'dashboard/order',
+            'icon' => 'fas fa-shopping-cart',
+            'submenu' => [
+                [
+                    'text' => 'Order',
+                    'url' => 'dashboard/order',
+                ],
+                [
+                    'text' => 'create order',
+                    'url' => 'dashboard/order/create',
                 ],
             ]
         ],
