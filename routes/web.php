@@ -4,9 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class,'getHomePage']);
+Route::get('/books', [HomeController::class,'getBooksPage']);
 
 Route::post('adminlogout',[LoginController::class, 'adminLogout'])->name('adminLogout');
 

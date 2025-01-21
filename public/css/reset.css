@@ -1,0 +1,148 @@
+:root {
+  --main-color: #d9176c;
+  --primary-color: #3b2f4a;
+  --bg-color: #f5f5f5;
+  --text-white: #fff;
+  --active-color: #eaa451;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+}
+
+a:hover {
+  color: #fff;
+}
+
+li {
+  list-style: none;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+/* main background */
+
+.main_bg {
+  background-color: var(--bg-color);
+}
+.main_text {
+  color: var(--main-color);
+}
+.main_text:hover {
+  color: var(--main-color);
+}
+
+/* main button  */
+
+.main_btn {
+  background-color: var(--main-color);
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: #fff;
+  border: none;
+  transition: 500ms;
+  border: 1px solid transparent;
+}
+
+.main_btn:hover {
+  background-color: #fff;
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+}
+
+/* primary btn */
+
+.primary_btn {
+  background-color: #fff;
+  border: 1px solid var(--main-color);
+  color: var(--main-color);
+  padding: 12px 16px;
+  border-radius: 8px;
+}
+
+.primary_btn:hover {
+  color: var(--main-color);
+}
+
+/* hero section */
+
+.hero-section {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../images/herosection.png");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
+
+/* Form style */
+
+.input_container {
+  border: 1px solid #22222233;
+  background-color: #ffffff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+.input_container input,
+textarea {
+  outline: none;
+  border: none;
+  flex-grow: 1;
+  resize: none;
+}
+
+.login-form label {
+  font-size: 18px;
+  font-weight: 600;
+  color: #222222;
+}
+.user-name input {
+  flex-grow: 1;
+}
+
+/* features */
+.feature {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.feature h1 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+.feature p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  margin: 0;
+  color: #22222280;
+  padding-right: 1rem;
+}
+
+/* book style */
+
+.recommended_card__price p {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.description {
+  color: #22222280;
+  font-size: 14px;
+}
