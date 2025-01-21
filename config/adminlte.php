@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+
 return [
 
     /*
@@ -411,6 +413,24 @@ return [
                 ],
             ]
         ],
+        
+        [
+            'text' => 'Admin Management',
+            'url' => 'dashboard/admin',
+            'icon' => 'fas fa-users-cog',
+            'can' => 'super-admin',
+            'submenu' => [
+                [
+                    'text' => 'Admins',
+                    'url' => 'dashboard/admin',
+                ],
+                [
+                    'text' => 'create admin',
+                    'url' => 'dashboard/admin/create',
+                ],
+            ]
+        ],
+        
         // ['header' => 'account_settings'],
         // [
         //     'text' => 'profile',

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\AdminController;
 use App\Http\Controllers\Dashboard\AuthorController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\DiscountController;
@@ -22,6 +23,7 @@ Route::middleware('dashboard')->group(function(){
     Route::resource('author', AuthorController::class);
     Route::resource('category',CategoryController::class);
     Route::resource('flash_sale',FlashSaleController::class);
+    Route::resource('admin',AdminController::class);
 
     Route::post('/add/discount/{category}',[CategoryController::class,'addDiscount'])->name('category.add.discount');
 
