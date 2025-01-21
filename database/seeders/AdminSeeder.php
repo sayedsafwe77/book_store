@@ -18,5 +18,10 @@ class AdminSeeder extends Seeder
             'email' => env('ADMIN_EMAIL'),
             'password' => env("ADMIN_PASSWORD")
         ]);
+        // Admin::create([
+        //     'name' => 'admin',
+        //     'email' => 'admin@admin.com',
+        //     'password' => 'admin1234'
+        // ]);
     }
 }

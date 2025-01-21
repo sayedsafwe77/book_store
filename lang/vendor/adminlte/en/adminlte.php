@@ -44,4 +44,7 @@ return [
     'contact_us' => 'Contact Us',
     'Contact_us' => 'Contact Us',
     "contact_uses" => 'Contact Us'
+    'Admin' => 'Admins',
+    'admins' => 'Admins',
+
 ];
