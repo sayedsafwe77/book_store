@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
+use App\Models\Book;
 class BookSeeder extends Seeder
 {
     /**
@@ -12,6 +12,6 @@ class BookSeeder extends Seeder
      */
     public function run(): void
     {
-        // dd(fake()->bookName());
+        Book::factory(10)->create();
     }
 }

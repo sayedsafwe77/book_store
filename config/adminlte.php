@@ -411,6 +411,21 @@ return [
                 ],
             ]
         ],
+        [
+            'text' => 'Books',
+            'url' => 'dashboard/book',
+            'icon' => 'fas fa-book',
+            'submenu' => [
+                [
+                    'text' => 'books',
+                    'url' => 'dashboard/book',
+                ],
+                [
+                    'text' => 'create book',
+                    'url' => 'dashboard/book/create',
+                ],
+            ]
+        ],
         // ['header' => 'account_settings'],
         // [
         //     'text' => 'profile',
