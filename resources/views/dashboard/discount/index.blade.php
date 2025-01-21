@@ -12,7 +12,7 @@
         </x-slot:actions>
     </x-header>
     <x-breadcrumb :breadcrumbs="generate_breadcrumbs()" />
-    {{-- @include('dashboard.discount.partials.filter') --}}
+    @include('dashboard.discount.partials.filter')
 @stop
 
 @section('content')
