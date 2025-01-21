@@ -18,8 +18,7 @@ class AdminController extends Controller
     public function index()
     {
         if (Gate::allows('super-admin')) {
-            // The user is a super-admin
-            $admins = Admin::whereNot('id',Auth::user()->id)->filter(request()->all())->orderByDesc('id')->paginate();
+            $admins = Admin::filter(request()->all())->orderByDesc('id')->paginate();
             return view('dashboard.admin-management.index',compact('admins'));
         }
     }
@@ -34,13 +33,13 @@ class AdminController extends Controller
                 return view('dashboard.admin-management.create');
         }
     }
-    
+
     /**
      * Store a newly created resource in storage.
      */
     public function store(AdminRequest $request)
     {
-        
+
         if (Gate::allows('super-admin')) {
             // The user is a super-admin
             try {
@@ -93,6 +92,11 @@ class AdminController extends Controller
             $data = $request->only('name','email','image','type');
             if($request->filled('password')){
                 $data['password'] = $request->password;
+            }
+            if($request->hasFile('image')){
+                $admin->clearMediaCollection('image');
+                $admin->addMediaFromRequest('image')
+                    ->toMediaCollection('image');
             }
             $admin->update($data);
             return redirect()->route('dashboard.admin.index')->with('success','Admin Updated Successfully');
