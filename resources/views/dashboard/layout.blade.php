@@ -31,6 +31,25 @@
         const checkCodeUrl = "{{route('discount.check.code')}}" ;
     </script>
     <script src="{{ asset('js/main.js')}}"></script>
+    <script>
+        @if (session('success'))
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: "{{ session('success') }}",
+                timer: 3000,
+                showConfirmButton: false
+            });
+        @endif
+        @if (session('error'))
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: "{{ session('error') }}",
+                timer: 3000,
+                showConfirmButton: false
+            });
+        @endif
+    </script>
 @endpush
-
 

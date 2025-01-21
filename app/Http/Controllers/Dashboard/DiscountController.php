@@ -16,14 +16,15 @@ class DiscountController extends Controller
     }
     function show($id)  {
         $discount = Discount::find($id);
-        return view('dashboard.discount.show',compact('discount'));
+        $categories = $discount->categories;
+        return view('dashboard.discount.show',compact('discount', 'categories'));
     }
     function create()  {
         return view('dashboard.discount.create');
     }
     function store(DiscountRequest $request)  {
         Discount::create($request->except('_token'));
-        return redirect()->route('dashboard.discount.index');
+        return redirect()->route('dashboard.discount.index')->with('success','discount created succefully');
     }
     function destroy(Discount $discount)  {
         $discount->delete();
