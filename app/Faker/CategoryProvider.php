@@ -83,7 +83,9 @@ class CategoryProvider extends Base
         });
 
         if (empty($available)) {
-            throw new \Exception("No unique categories left.");
+            // throw new \Exception("No unique categories left.");
+            static::$usedCategories = [];  // Reset the used categories
+            $available = static::$categories;  // Reset the available categories
         }
 
         $category = static::randomElement($available);
