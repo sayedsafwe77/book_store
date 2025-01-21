@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+
 return [
 
     /*
@@ -411,6 +413,56 @@ return [
                 ],
             ]
         ],
+        [
+            'text' => 'contact us',
+            'url' => 'dashboard/contact_us',
+            'icon' => 'fas fa-phone',
+            'submenu' => [
+                [
+                    'text' => 'contact us',
+                    'url' => 'dashboard/contact_us',
+                ],
+                [
+                    'text' => 'create contact us',
+                    'url' => 'dashboard/contact_us/create',
+                ],
+            ]
+        ],
+
+        
+        [
+            'text' => 'Admin Management',
+            'url' => 'dashboard/admin',
+            'icon' => 'fas fa-users-cog',
+            'can' => 'super-admin',
+            'submenu' => [
+                [
+                    'text' => 'Admins',
+                    'url' => 'dashboard/admin',
+                ],
+                [
+                    'text' => 'create admin',
+                    'url' => 'dashboard/admin/create',
+                ],
+            ]
+        ],
+
+        [
+            'text' => 'Books',
+            'url' => 'dashboard/book',
+            'icon' => 'fas fa-book',
+            'submenu' => [
+                [
+                    'text' => 'books',
+                    'url' => 'dashboard/book',
+                ],
+                [
+                    'text' => 'create book',
+                    'url' => 'dashboard/book/create',
+                ],
+            ]
+        ],
+
         // ['header' => 'account_settings'],
         // [
         //     'text' => 'profile',
