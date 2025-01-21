@@ -9,8 +9,8 @@
         </a>
     </x-slot:actions>
 </x-header>
-{{-- <x-breadcrumb :breadcrumbs="generate_breadcrumbs()" />
-@include('dashboard.contact_us.partials.filters') --}}
+<x-breadcrumb :breadcrumbs="generate_breadcrumbs()" />
+@include('dashboard.contact_us.partials.filters')
 @stop
 
 

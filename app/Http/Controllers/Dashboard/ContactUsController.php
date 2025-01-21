@@ -13,7 +13,7 @@ class ContactUsController extends Controller
      */
     public function index()
     {
-        $contacts=ContactUs::orderBy('id')->paginate();
+        $contacts=ContactUs::filter(request()->all())->orderBy('id','DESC')->paginate();
         return view('dashboard.contact_us.index',compact('contacts'));
     }
 

@@ -6,4 +6,6 @@ return [
     "name" => "الاسم",
     "email" => "البريد الالكتروني",
     "message" => "الرسالة",
+    'email_placholder' => 'البريد الالكتروني',
+    'name_placholder' => 'الاسم',
 ];

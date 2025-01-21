@@ -15,14 +15,14 @@
             </div>
             <div class="col-md-4 mb-4">
                 <div class="form-group">
-                    <label for="name">{{ __('contact_us.massage') }}</label>
+                    <label for="name">{{ __('contact_us.email') }}</label>
                     <input
                         type="text"
-                        name="massage"
-                        id="massage"
+                        name="email"
+                        id="email"
                         class="form-control"
-                        placeholder="{{ __('contact_us.massage_placholder') }}"
-                        value="{{ request('massage') }}">
+                        placeholder="{{ __('contact_us.email_placholder') }}"
+                        value="{{ request('email') }}">
                 </div>
             </div>
             <div class="col-md-12 text-end">
