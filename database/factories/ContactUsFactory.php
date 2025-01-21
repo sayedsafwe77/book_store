@@ -17,7 +17,15 @@ class ContactUsFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' =>[
+                'en'=>fake()->sentence(7),
+                'ar'=>fake()->sentence(7)
+            ],
+            'email' =>fake()->email(),
+            'message' =>[
+                'en'=>fake()->sentence(7),
+                'ar'=>fake()->sentence(7)
+            ]
         ];
     }
 }

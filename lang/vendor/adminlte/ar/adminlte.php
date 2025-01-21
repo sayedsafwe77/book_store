@@ -32,6 +32,9 @@ return [
     'authors' => 'المؤلفون',
     'flash_sale' => 'العروض',
     'flash_sales' => 'العروض',
+    'contact_us'=>'تواصل معنا',
+    'Contact_us'=>'تواصل معنا',
+    "contact_uses" => 'تواصل معنا',
 
     'Admin' => 'المدراء',
     'admins' => 'المدراء',

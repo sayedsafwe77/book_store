@@ -413,6 +413,21 @@ return [
                 ],
             ]
         ],
+        [
+            'text' => 'contact us',
+            'url' => 'dashboard/contact_us',
+            'icon' => 'fas fa-phone',
+            'submenu' => [
+                [
+                    'text' => 'contact us',
+                    'url' => 'dashboard/contact_us',
+                ],
+                [
+                    'text' => 'create contact us',
+                    'url' => 'dashboard/contact_us/create',
+                ],
+            ]
+        ],
 
         
         [
