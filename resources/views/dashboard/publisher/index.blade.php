@@ -20,6 +20,7 @@
             <tr>
                 <th>{{ __('publisher.id') }}</th>
                 <th>{{ __('publisher.name') }}</th>
+                <th>{{ __('publisher.image') }}</th>
                 <th>{{ __('actions.created_at') }}</th>
                 <th>{{ __('actions.updated_at') }}</th>
                 <th>{{ __('actions.actions') }}</th>
@@ -30,6 +31,15 @@
                 <tr>
                     <td> {{ $publisher->id }}</td>
                     <td> {{ $publisher->name }}</td>
+                    <td>
+                       
+
+                        @if ($publisher->getFirstMediaUrl('image','preview'))
+                            <img src="{{asset('').parse_url($publisher->getFirstMediaUrl('image','preview'), PHP_URL_PATH)}}"
+                                alt="Thumbnail"
+                                style="width:50px; height:50px; object-fit: contain;">
+                        @endif
+                    </td>
                     <td> {{ $publisher->created_at }}</td>
                     <td> {{ $publisher->updated_at }}</td>
                     <td class="d-flex">

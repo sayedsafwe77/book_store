@@ -20,12 +20,20 @@ class PublisherController extends Controller
         return view('dashboard.publisher.create');
     }
     function store(PublisherRequest $request)  {
-        Publisher::create($request->except('_token'));
+        $publisher = Publisher::create($request->except('_token'));
+
+        if($request->hasFile('image')){
+
+            $publisher->addMediaFromRequest('image')
+            ->toMediaCollection('image');
+        }
+
         return redirect()->route('dashboard.publisher.index');
     }
     function destroy(Publisher $publisher)  {
         $publisher->delete();
-        return redirect()->route('dashboard.publisher.index');
+        return redirect()->route('dashboard.publisher.index')
+        ->with('success', $publisher->name . ' profile has been created successfully');
     }
 
     function edit(Publisher $publisher)  {

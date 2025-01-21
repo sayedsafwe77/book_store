@@ -33,5 +33,14 @@ return [
     'flash_sale' => 'العروض',
     'flash_sales' => 'العروض',
     'orders' => 'الطلبات',
+    'contact_us'=>'تواصل معنا',
+    'Contact_us'=>'تواصل معنا',
+    "contact_uses" => 'تواصل معنا',
+
+    'Admin' => 'المدراء',
+    'admins' => 'المدراء',
+    'books' => 'الكُتب',
+    'book' => 'الكتاب'
 
 ];
+

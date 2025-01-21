@@ -10,6 +10,7 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Translatable\HasTranslations;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use App\Models\Book;
 
 class Category extends Model implements HasMedia
 {
@@ -36,5 +37,13 @@ class Category extends Model implements HasMedia
     }
     function discount()  {
         return $this->belongsTo(Discount::class);
+
     }
+
+
+    //! 005 => Set realtions
+     //* 5.1
+     public function books(){
+        return $this->hasMany(Book::class);
+     }
 }

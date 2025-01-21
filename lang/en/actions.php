@@ -10,11 +10,12 @@ return [
     'create' => 'Create',
     'export' => 'Export',
     'import' => 'Import',
+
     "created_at" => 'created_at',
     "updated_at" => 'updated_at',
     'Save' => 'Save',
     'no_items_selected' => 'No items selected',
    'choose'=> 'Choose One',
    'dont_have_data'=> 'Sorry, no data available. !'
- 
+    'dashboard' => 'dashboard',
 ];

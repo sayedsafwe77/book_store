@@ -21,4 +21,8 @@ class Discount extends Model
     {
         return \Carbon\Carbon::parse($value)->format('Y-m-d'); // Adjust the format as needed
     }
+
+    public function categories() {
+        return $this->hasMany(Category::class);
+    }
 }

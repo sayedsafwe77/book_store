@@ -21,6 +21,21 @@
     @endif
     <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet" />
     <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet" />
+
+    <style>
+        .custom-form {
+            box-shadow: rgba(83, 158, 214, 0.15) 0px 2px 10px 0px;
+            padding: 20px ;
+            border-radius: 8px;
+            background-color: #fff;
+        }
+        .content-header {
+            padding-bottom: 5px;
+        }
+        .bread-crumb {
+            font-size: 16px;
+        }
+    </style>
 @stop
 
 @push('js')
