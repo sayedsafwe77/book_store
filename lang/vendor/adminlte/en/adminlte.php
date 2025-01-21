@@ -41,6 +41,8 @@ return [
     'Author' => 'authors',
     'flash_sale' => 'flash sales',
     'flash_sales' => 'flash sales',
+    'order' => 'Order',
+    'Order' => 'Order',
     'orders' => 'Orders',
 
 ];
