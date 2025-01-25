@@ -406,7 +406,6 @@ return [
                 [
                     'text' => 'FlashSale',
                     'url' => 'dashboard/flash_sale',
-                    'active' => request()->is('dashboard/flash_sale/*') && !request()->is('dashboard/flash_sale/create'),
                 ],
                 [
                     'text' => 'create flash_sale',
@@ -445,7 +444,7 @@ return [
             ]
         ],
 
-        
+
         [
             'text' => 'Admin Management',
             'url' => 'dashboard/admin',
