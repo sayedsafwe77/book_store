@@ -15,7 +15,8 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class CategoryController extends Controller
 {
-    function index()  {
+    function index()
+    {
         $categories = Category::filter(request()->all())->orderBy('id','DESC')->paginate();
         return view('dashboard.category.index',compact('categories'));
     }

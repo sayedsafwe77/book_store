@@ -10,6 +10,8 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
+
+
 class BookSeeder extends Seeder
 {
     /**
@@ -36,7 +38,6 @@ class BookSeeder extends Seeder
                     $title = mb_strimwidth($bookData['title'], 0, $maxNameLength, '');
 
                     $image = $bookData['formats']['image/jpeg'] ?? null;
-                    $book = Book::find(1);
                     $description = $bookData['subjects'] ? implode(', ', $bookData['subjects']) : 'No description available.';
                     $slug = Str::slug($title);
                     $quantity = random_int(1, 50);
