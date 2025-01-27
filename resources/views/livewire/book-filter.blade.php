@@ -16,9 +16,9 @@
                                 <input type="checkbox" name="categories" id="categories" />
                                 <label for="categories">All Categories</label>
                             </div>
-                            <p>({{ $categories->count() }})</p>
+                            <p>({{ $this->categories->count() }})</p>
                         </div>
-                        @foreach ($categories as $category)
+                        @foreach ($this->categories as $category)
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="d-flex gap-3 align-items-center">
                                     <input type="checkbox" name="business" value="{{ $category->id }}" wire:model.live="categories_id" id="business" />
@@ -93,6 +93,8 @@
             </div>
         </div>
         @foreach ($books as $book)
+
+
             <div class="row books_book">
                 <div class="col-lg-3">
                     <div class="book_image">
@@ -109,7 +111,7 @@
                                 </p>
                             </div>
                             <div class="discount">
-                                <p class="discount_code">25% Discount code: Ne212</p>
+                                <p class="discount_code">{{$book->getActiveDiscountValue()}}% Discount code: Ne212</p>
                             </div>
                         </div>
                         <div class="d-flex flex-wrap justify-content-between align-items-end gap-4">

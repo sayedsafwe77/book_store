@@ -13,6 +13,7 @@ class Discount extends Model
     protected $fillable = ['code','quantity','percentage','expiry_date'];
 
 
+    protected $casts = ['expiry_date' => 'date'];
     public function getCreatedAtAttribute($value)
     {
         return \Carbon\Carbon::parse($value)->format('Y-m-d'); // Adjust the format as needed
@@ -24,5 +25,9 @@ class Discount extends Model
 
     public function categories() {
         return $this->hasMany(Category::class);
+    }
+
+    public function books(){
+        return $this->morphMany(Book::class,'discountable');
     }
 }

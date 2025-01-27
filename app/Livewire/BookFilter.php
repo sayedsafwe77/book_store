@@ -4,14 +4,17 @@ namespace App\Livewire;
 
 use App\Models\Book;
 use App\Models\Category;
+use Livewire\Attributes\Computed;
 use Livewire\Component;
 
 class BookFilter extends Component
 {
-    public $categories;
     public $categories_id = [];
-    function boot(){
-        $this->categories = Category::has('books')->withCount('books')->get();
+
+    #[Computed]
+    public function categories()
+    {
+        return Category::has('books')->withCount('books')->get();
     }
 
     public function render()

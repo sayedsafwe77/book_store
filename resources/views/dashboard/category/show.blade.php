@@ -16,10 +16,8 @@
 @stop
 
 
-@section('js')
+@push('js')
     <script>
-        console.log("{{route('discount.search')}}");
-
         $('.discount-select2').select2({
             placeholder: 'select discount',
             ajax: {
@@ -37,4 +35,4 @@
         });
 
     </script>
-@stop
+@endpush

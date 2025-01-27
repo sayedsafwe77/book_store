@@ -58,10 +58,72 @@
                 fgroup-class="col-md-6"  required/>
         </div>
         <div class="row">
-            <span>{{__('book.is_available')}}</span>
-            <input type="checkbox" required  name="is_available" id="" value="1" fgroup-class="col-md-4">
+            <label for="is_available">{{__('book.is_available')}}</label>
+            <input type="checkbox" required   name="is_available" id="is_available" value="1" fgroup-class="col-md-4">
+        </div>
+        <div class="row">
+            <label for="discountable_type" class="col-12">Select Discount Type:</label>
+            <input type="radio" name="discountable_type" id="discount_id" value="App\Models\Discount">
+            <label for="discount_id">Discount</label>
+            <input type="radio" name="discountable_type" id="flash_sale_id" value="App\Models\FlashSale">
+            <label for="flash_sale_id">FlashSale</label>
+        </div>
+
+        <div class="row">
+            <select class="js-example-placeholder-single col-md-3 js-states form-control discount-select2" style="display: none" name="discountable_id">
+                <option></option>
+              </select>
         </div>
         <x-adminlte-button theme="outline-primary" class="btn-lg mx-auto" type="submit" label="{{__('actions.Save')}}"/>
     </form>
 
     @endsection
+@push('js')
+<script>
+    const discountRadio = document.querySelector('#discount_id');
+    const flashSaleRadio = document.querySelector('#flash_sale_id');
+    const discountDropDown = document.querySelector('.discount-select2');
+    let placeholder= '';
+    const discountUrl = "{{route('discount.search')}}";
+    const FlashSaleUrl = "{{route('flash_sale.search')}}";
+    const local = "{{App::getLocale()}}";
+
+    let url = '';
+    discountRadio.addEventListener('change',showDiscountDropDown);
+    flashSaleRadio.addEventListener('change',showDiscountDropDown);
+    function showDiscountDropDown(){
+        discountDropDown.style.display = 'block';
+        if(this.id == 'discount_id') {
+            placeholder = 'select discount';
+            url = discountUrl;
+        }
+        else{
+            placeholder = 'select flash_sale';
+            url = FlashSaleUrl;
+        }
+
+        enableSelect2();
+    }
+  function enableSelect2(){
+    $('.discount-select2').select2({
+        placeholder,
+        ajax: {
+            url,
+            dataType: 'json',
+            processResults: function(data){
+                return {
+                    results: data.data.discounts.map(discount =>  {
+                        const text  = url == discountUrl ? discount.code + '-' + discount.percentage : discount.name[local];
+                        return {
+                            id: discount.id,
+                            text
+                        }
+                    })
+                }
+            }
+        }
+    });
+  }
+
+</script>
+@endpush

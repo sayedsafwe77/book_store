@@ -27,6 +27,6 @@ class HomeController extends Controller
         return view('website.home');
     }
     function getBooksPage()  {
-        return view('website.books',compact('categories'));
+        return view('website.books');
     }
 }

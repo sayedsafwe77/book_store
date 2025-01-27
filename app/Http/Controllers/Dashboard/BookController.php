@@ -34,8 +34,7 @@ class BookController extends Controller
     public function store(Request $request){
 
         //! 001 => store record
-        Book::create($request->all());
-
+        Book::create($request->except('image'));
         //! 002 => redirect with message
         return redirect()->route('dashboard.book.index')->with('success' , 'created successfully');
     }

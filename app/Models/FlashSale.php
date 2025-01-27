@@ -29,4 +29,7 @@ class FlashSale extends Model
 
     protected $casts = ['name' => 'array','description' => 'array'];
 
+    public function books(){
+        return $this->morphMany(Book::class,'discountable');
+    }
 }

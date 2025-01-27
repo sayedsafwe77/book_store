@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FlashSale\CreateFlashSaleRequest;
 use App\Models\FlashSale;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class FlashSaleController extends Controller
 {
@@ -66,5 +68,10 @@ class FlashSaleController extends Controller
     {
         $flashSale->delete();
         return redirect()->route('dashboard.flash_sale.index')->with('success', 'Flash sale deleted successfully!');
+    }
+
+    function search(Request $request)  {
+        $discounts = FlashSale::select("name" ,'id')->whereLike('name',"%$request->q%")->limit(5)->get();
+        return response()->json(['data' => ['discounts' => $discounts]]);
     }
 }
