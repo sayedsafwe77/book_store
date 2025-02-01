@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="{{asset('css/reset.css')}}" />
     <link rel="stylesheet" href="{{asset('css/layout.css')}}" />
     <title>@yield('title')</title>
+    <link rel="stylesheet" href="{{asset('vendor/sweetalert2/sweetalert2.css')}}">
     @stack('css')
   </head>
 
@@ -70,70 +71,78 @@
                   >
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="books.html">Books</a>
+                  <a class="nav-link" href="{{route('book')}}">Books</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="about.html">About us</a>
                 </li>
               </ul>
-              <!-- <div class="d-flex gap-3">
-                <a class="main_btn login_btn" href="login.html" type="button"
-                  >Log in</a
-                >
-                <a class="primary_btn" href="register.html" type="button"
-                  >Sign Up
-                </a>
-              </div> -->
-              <div class="profile d-flex gap-4 align-items-center">
+              <div class="profile d-flex gap-4 align-items-end">
                 <a href="wishlist.html" class="wishlist-link">
                   <span>1</span>
                   <i class="fa-regular fa-heart fs-3"></i
                 ></a>
-                <a href="cart.html" class="cart-link">
+                <a href="{{route('cart.index')}}" class="cart-link">
                   <span>1</span>
 
                   <i class="fa-solid fa-cart-shopping fs-3"></i
                 ></a>
-                <div class="dropdown">
-                  <button
-                    class="dropdown-toggle d-flex align-items-center border-0 profile_dropdown gap-2"
-                    type="button"
-                    id="dropdownMenuButton1"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    <div class="profile_image">
-                      <img
-                        src="./images/commentimage.jpeg"
-                        alt=""
-                        class="w-100 h-100"
-                      />
+                @auth
+                    <div class="dropdown">
+                        <button
+                            class="dropdown-toggle d-flex align-items-center border-0 profile_dropdown gap-2"
+                            type="button"
+                            id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                        >
+                            <div class="profile_image">
+                            <img
+                                src="./images/commentimage.jpeg"
+                                alt=""
+                                class="w-100 h-100"
+                            />
+                            </div>
+                            <div class="flex-column align-items-start">
+                            <p class="fs-6 fw-bold text-light text-start">
+                                Ahmed Fawzy
+                            </p>
+                            <p class="text-secondary">fawzy@gmail.com</p>
+                            </div>
+                        </button>
+                        <ul
+                            class="dropdown-menu"
+                            aria-labelledby="dropdownMenuButton1"
+                        >
+                            <li>
+                            <a class="dropdown-item" href="profile.html">Profile</a>
+                            </li>
+                            <li>
+                            <a class="dropdown-item" href="orders.html"
+                                >Order History</a
+                            >
+                            </li>
+                            <li>
+                            <a class="dropdown-item" href="#">Log Out</a>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="flex-column align-items-start">
-                      <p class="fs-6 fw-bold text-light text-start">
-                        Ahmed Fawzy
-                      </p>
-                      <p class="text-secondary">fawzy@gmail.com</p>
-                    </div>
-                  </button>
-                  <ul
-                    class="dropdown-menu"
-                    aria-labelledby="dropdownMenuButton1"
-                  >
-                    <li>
-                      <a class="dropdown-item" href="profile.html">Profile</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="orders.html"
-                        >Order History</a
-                      >
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">Log Out</a>
-                    </li>
-                  </ul>
-                </div>
+                @endauth
+
               </div>
+              @guest
+                <div class="d-flex gap-3">
+                    <a class="main_btn login_btn" href="{{route('login')}}" type="button"
+                    >Log in</a
+                    >
+                    <a class="primary_btn" href="{{route('register')}}" type="button"
+                    >Sign Up
+                    </a>
+                </div>
+              @endguest
+
+
+
             </div>
           </div>
         </nav>
@@ -199,3 +208,16 @@
     @stack('js')
   </body>
 </html>
+
+<script src="{{asset('vendor/sweetalert2/sweetalert2.min.js')}}"></script>
+<script>
+        @if (session('success'))
+        Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: "{{ session('success') }}",
+            timer: 3000,
+            showConfirmButton: false
+        });
+    @endif
+</script>

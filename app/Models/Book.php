@@ -46,24 +46,25 @@ class Book extends Model implements HasMedia
         }
 
         function getActiveDiscountValue() {
-            $discount = $this->discountable;
-            $discount_expired = false;
-            $current_date = Carbon::now();
-            $discount_value = 0;
-            if($discount){
-                if($discount instanceof Discount){
-                    if($discount->quantity <= 0 || $current_date->diffInDays($discount->expiry_date) <= 0) $discount_expired = true;
-                }else{
-                    $expiry_date = Carbon::createFromFormat("Y-m-d H:i:s","$discount->date $discount->start_time")->addHours($discount->time);
-                    if(!$discount->is_active || $current_date->diffInDays($expiry_date) <= 0) $discount_expired = true;
-                }
-            }
-
-            if(!$discount || $discount_expired){
-                $discount = $this->category->discount;
-                if($discount){
-                    if($discount->quantity <= 0 || $current_date->diffInDays($discount->expiry_date) <= 0) return 0;
-                }
-            }
+            $discount = $this->getValidDiscount();
+            return $discount?->percentage;
         }
+
+        function getValidDiscount(){
+            $discount = $this->discountable;
+            if($discount && !$this->isDiscountExpired($discount)) return $discount;
+            $category_discount = $this->category->discount ?? null;
+            if($category_discount && !$this->isDiscountExpired($discount)) return $category_discount;
+        }
+
+        function isDiscountExpired($discount){
+            // check if discount object from Discount model return is this discount expired or not based on discount expiration critire
+            if($discount instanceof Discount) return $discount->quantity <= 0 || $discount->expiry_date->isPast();
+            // if discout is flash sale so this code will run to check if this flash sale is expired or not
+            $expiry_date = Carbon::createFromFormat("Y-m-d H:i:s","$discount->date $discount->start_time")->addHours($discount->time);
+            return !$discount->is_active || $expiry_date->isPast();
+        }
+
+
+
 }

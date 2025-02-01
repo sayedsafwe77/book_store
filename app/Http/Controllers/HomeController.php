@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -28,5 +29,11 @@ class HomeController extends Controller
     }
     function getBooksPage()  {
         return view('website.books');
+    }
+    function getRegisterPage()  {
+        return view('website.auth.register');
+    }
+    function getLoginPage()  {
+        return view('website.auth.login');
     }
 }
