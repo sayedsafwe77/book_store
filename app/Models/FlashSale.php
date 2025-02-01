@@ -23,6 +23,8 @@ class FlashSale extends Model
         'date',
         'time',
         'is_active',
+        'percentage',
+        'start_time',
     ];
 
     public $translatable = ['name','description'];

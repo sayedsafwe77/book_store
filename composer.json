@@ -20,6 +20,7 @@
         "laravel/ui": "^4.6",
         "livewire/livewire": "^3.5",
         "maatwebsite/excel": "^1.1",
+        "nafezly/payments": "dev-master",
         "spatie/laravel-medialibrary": "^11.12",
         "spatie/laravel-translatable": "^6.9",
         "tucker-eric/eloquentfilter": "^3.4"
