@@ -1,0 +1,241 @@
+body {
+  background-color: var(--bg-color);
+}
+
+.hero-section {
+  min-height: 20vh;
+}
+
+.swiper-slide img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.status__book > div,
+.status__book > p {
+  border: 1px solid #22222233;
+  background-color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+
+.instock p {
+  color: #25d994;
+}
+
+.dlivery p {
+  color: #22222280;
+}
+
+.dis-code {
+  color: #eaa451;
+}
+
+.books_count span {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--main-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.des_price {
+  text-decoration: line-through;
+  color: #22222280;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+.nav-tab_btn {
+  color: #22222280 !important;
+}
+.nav-tab_btn.active {
+  color: #000 !important;
+  border: none !important;
+  border-bottom: 2px solid #eaa451 !important;
+  background-color: transparent !important;
+}
+
+.comment {
+  background-color: #fff;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.person_comment-name {
+  font-weight: 800;
+}
+.comment_date {
+  color: #22222280;
+}
+.rate {
+  font-size: 20px;
+  font-weight: 800;
+}
+.person_comment-email {
+  color: #25d994;
+  font-weight: 600;
+}
+.person_comment .image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.person_comment .image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.books-sale_card {
+  padding: 1rem;
+  background-color: var(--primary-color);
+  border-radius: 10px;
+  display: flex;
+  gap: 1.5rem;
+  width: 85%;
+}
+.recommended_card__content h3 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.books-sale_card__image {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  display: flex;
+  align-items: center;
+}
+
+.main_price {
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.sale_price {
+  font-size: 14px;
+  color: #ffffff4d;
+}
+
+.counter {
+  width: 145px;
+  height: 145px;
+  border-radius: 50%;
+  border: 1.96px solid #dadada;
+  box-shadow: 3.92px 7.84px 11.76px 0px #0000000d;
+  margin: 1rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.timer {
+  width: 95%;
+  height: 95%;
+  border: 3px solid var(--main-color);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* range progress */
+.books-sale_head {
+  width: 84%;
+}
+.books-sale_head h4 {
+  font-size: 26px;
+  font-weight: 700;
+}
+.books-sale_head p {
+  color: #22222280;
+  width: 52%;
+}
+.range-container {
+  width: 200px;
+}
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(to right, #eaa451 50%, #ffffff1a 50%);
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 0;
+  height: 0;
+  background: transparent;
+  pointer-events: none;
+}
+
+/* splide arrows */
+.splide__slide-sale {
+  width: 45%;
+}
+.splide__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background-color: #f5f5f5;
+  color: #22222233;
+  border: 1px solid #0000001a;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0px 1px 2px 2px #2222221a;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.splide__arrow_prev {
+  left: 0;
+}
+.splide__arrow_next {
+  right: 0;
+}
+.splide__arrow::after {
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+}
+
+.splide__arrow--prev {
+  left: -50px;
+}
+
+.splide__arrow--next {
+  right: -50px;
+}
+.book__des {
+  width: 75%;
+  color: #22222280;
+}
+/* end splide arrows */
+@media (max-width: 768px) {
+  .dis-code {
+    width: 100% !important;
+  }
+  .books-sale_card {
+    width: 100%;
+  }
+  .prices__book {
+    justify-content: end !important;
+  }
+  .book__des {
+    width: 100%;
+    margin: 1rem 0;
+  }
+}

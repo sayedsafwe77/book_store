@@ -1,0 +1,38 @@
+<?php
+
+namespace App\Http\Controllers\Dashboard;
+
+use App\Http\Controllers\Controller;
+use App\Models\{{modelName}};
+use Illuminate\Http\Request;
+use App\Http\Requests\{{modelName}}Request;
+
+
+class {{modelName}}Controller extends Controller
+{
+    public function index() {
+        ${{modelPlural}} = {{modelName}}::filter(request()->all())->orderBy('id','DESC')->paginate();
+        return view('dashboard.{{modelName}}.index',compact('{{modelPlural}}'));
+     }
+    public function create() {
+        return view('dashboard.{{modelName}}.create');
+    }
+    public function store({{modelName}}Request $request) {
+        {{modelName}}::create($request->except('_token'));
+        return redirect()->route('dashboard.{{resourceName}}.index');
+    }
+    public function show({{modelName}} ${{resourceName}}) {
+        return view('dashboard.{{resourceName}}.show',compact('{{resourceName}}'));
+    }
+    public function edit({{modelName}} ${{resourceName}}) {
+        return view('dashboard.{{resourceName}}.edit',compact('{{resourceName}}'));
+    }
+    public function update({{modelName}}Request $request, {{modelName}} ${{resourceName}}) {
+        ${{resourceName}}->update($request->validated());
+        return redirect()->route('dashboard.{{resourceName}}.index');
+     }
+    public function destroy({{modelName}} ${{resourceName}}) {
+        ${{resourceName}}->delete();
+        return redirect()->route('dashboard.{{resourceName}}.index');
+    }
+}

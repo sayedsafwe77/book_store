@@ -1,0 +1,96 @@
+body {
+  background-color: var(--bg-color);
+}
+
+.hero-section {
+  min-height: 20vh;
+}
+
+.dlivery {
+  border: 1px solid #22222233;
+  background-color: #fff;
+  padding: 0.5rem 0.5rem;
+  width: 90%;
+  text-align: center;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.books_count span {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--main-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.item-cart {
+  background-color: #fff;
+  padding: 1rem;
+}
+
+.del-item {
+  cursor: pointer;
+}
+.remove {
+  display: none;
+}
+.cart_btn {
+  background-color: var(--primary-color);
+}
+.cart_btn:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+.checkout-btn p {
+  font-size: 14px;
+}
+
+.arrow-icon {
+  width: 35px;
+  height: 35px;
+  border-radius: 8px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--main-color);
+}
+
+.move-cart-btn {
+  background-color: #d9176c1a;
+  color: var(--main-color);
+  border-color: var(--main-color);
+}
+
+@media (max-width: 768px) {
+  .table_head,
+  .sell-price {
+    display: none !important;
+  }
+
+  .item-image img {
+    height: 80% !important;
+  }
+  .remove {
+    display: block;
+  }
+
+  .del-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--main-color);
+    padding: 12px 16px;
+    border-radius: 8px;
+    color: #fff;
+    border: none;
+    transition: 500ms;
+  }
+}

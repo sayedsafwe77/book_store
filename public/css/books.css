@@ -1,0 +1,105 @@
+body {
+  background-color: var(--bg-color);
+}
+
+.hero-section {
+  min-height: 20vh;
+}
+
+.accordion-button:focus {
+  z-index: 3;
+  border-color: transparent;
+  outline: 0;
+  box-shadow: 0 0 0 0 transparent;
+}
+
+.accordion-button:not(.collapsed) {
+  color: #d9176c80;
+  background-color: transparent;
+  font-size: 18px;
+  font-weight: 600;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125);
+}
+
+.accordion-button:not(.collapsed)::after {
+  background-image: url("../images/left-arrow.png");
+  transform: rotate(-180deg);
+  margin-bottom: 5px;
+}
+
+.books_book {
+  background-color: #fff;
+  margin: 1rem;
+  padding: 0.8rem;
+  border-radius: 12px;
+}
+
+.book_detailes__title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.book_detailes__description {
+  font-weight: 400;
+  color: #22222280;
+  margin: 1rem 0;
+}
+
+.discount {
+  background-color: #fff;
+  border: 1px solid #ebc305;
+  color: #ebc305;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  height: fit-content;
+}
+
+.discount_code {
+  white-space: nowrap;
+}
+
+.book_stars__review-rate,
+.author,
+.year {
+  color: #00000080;
+  font-weight: 400;
+}
+
+/* SWIPER */
+
+.swiper-slide_category {
+  border: 1px solid #00000080;
+  /* background-color: var(--main-color); */
+  padding: 10px 24px;
+  color: #000;
+  cursor: pointer;
+  white-space: nowrap;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.swiper-slide_category.active {
+  background-color: #d9176c80;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .book_detailes div {
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+
+  .cart-btn {
+    flex-grow: 1;
+  }
+
+  .book_detailes__content {
+    flex-direction: column-reverse;
+  }
+  .discount {
+    width: 100%;
+  }
+  .discount p {
+    text-align: center;
+  }
+}
