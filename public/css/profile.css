@@ -1,0 +1,22 @@
+.hero-section {
+  min-height: 15vh;
+}
+
+.profile_image {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile_image img {
+  height: 100%;
+  width: 100%;
+}
+
+.profile_form {
+  background-color: #fff;
+  padding: 2rem;
+  border: 1px solid #22222233;
+  border-radius: 20px;
+}

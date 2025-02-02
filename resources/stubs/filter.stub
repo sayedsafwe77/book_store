@@ -1,0 +1,11 @@
+<?php
+
+namespace App\Filters;
+
+class {{modelName}}Filter
+{
+    public function name($value)
+    {
+        // Add filtering logic
+    }
+}

@@ -1,0 +1,6 @@
+.hero-section {
+  min-height: 50vh;
+}
+.user-name div {
+  flex-grow: 1;
+}

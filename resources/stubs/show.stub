@@ -1,0 +1,8 @@
+@extends('dashboard.layout')
+
+@section('title', {{modelName}})
+
+
+@section('content')
+    <h1>{{${{modelName}}->name}}</h1>
+@stop
