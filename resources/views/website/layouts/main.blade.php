@@ -78,10 +78,7 @@
                 </li>
               </ul>
               <div class="profile d-flex gap-4 align-items-end">
-                <a href="wishlist.html" class="wishlist-link">
-                  <span>1</span>
-                  <i class="fa-regular fa-heart fs-3"></i
-                ></a>
+                @livewire('wish-list-counter')
                 <a href="{{route('cart.index')}}" class="cart-link">
                   <span>1</span>
 

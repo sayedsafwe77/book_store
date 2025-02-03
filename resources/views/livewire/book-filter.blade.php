@@ -172,9 +172,7 @@
                                         @else
                                         <p>not available</p>
                                         @endif
-                                        <button class="primary_btn">
-                                            <i class="fa-regular fa-heart"></i>
-                                        </button>
+                                        @livewire('wish-list' , ['book' => $book])
                                     </div>
                                 </div>
                             </div>
