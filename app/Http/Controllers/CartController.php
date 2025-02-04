@@ -12,14 +12,19 @@ class CartController extends Controller
 {
     function index(){
         if(Auth::check()){
-            $cart = AddToCart::where('user_id')->get();
+            $cart = AddToCart::where('user_id',Auth::id())->get();
+            $book_ids = $cart->pluck('book_id')->toArray();
+            $cart = $cart->mapWithKeys(fn($item) => [ $item->book_id => $item->quantity ])->toArray();
         }else{
             $cart = Session::get('cart',[]);
+            $book_ids = array_keys($cart);
+            $cart = collect($cart);
         }
-        $books = Book::whereIn('id',array_keys($cart))->get();
-        return view('website.cart',compact('books'));
+        $books = Book::whereIn('id',$book_ids)->get();
+        return view('website.cart',compact('books','cart'));
     }
     function addItem($book_id,Request $request)  {
+        dd($book_id,$request->quantity);
         $quantity = $request->has('quantity') ? $request->get('quantity') : 1;
         if(Auth::check()){
             AddToCart::updateOrCreate(['user_id' => Auth::id(),'book_id' => $book_id],[

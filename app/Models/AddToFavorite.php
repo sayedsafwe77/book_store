@@ -9,4 +9,5 @@ class AddToFavorite extends Model
 {
     /** @use HasFactory<\Database\Factories\AddToFavoriteFactory> */
     use HasFactory;
+    protected $fillable = ['user_id','book_id'];
 }

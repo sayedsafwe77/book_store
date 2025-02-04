@@ -18,7 +18,7 @@ Route::controller(HomeController::class)->group(function(){
 
 Route::controller(AuthController::class)->group(function () {
     Route::post('/login' , 'login')->name('postLogin');
-    Route::post('/logout' , 'logout')->name('postLogout');
+    Route::get('/logout' , 'logout')->name('logout');
 });
 
 Route::controller(ForgetPasswordController::class)->group(function(){

@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Mail\SendOtpMail;
 use Ichtrojan\Otp\Otp;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -12,7 +13,6 @@ class OtpNotification extends Notification
 {
     use Queueable;
 
-    public $otp;
 
     /**
      * Create a new notification instance.
@@ -21,7 +21,6 @@ class OtpNotification extends Notification
      */
     public function __construct()
     {
-        $this->otp = new Otp;
     }
 
     /**
@@ -43,9 +42,7 @@ class OtpNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        $otp = $this->otp->generate($notifiable->email , 'numeric' , 4 , 10);
-        return (new MailMessage)
-                    ->greeting('Otp code')
-                    ->line('Code :' .$otp->token );
+        $otp = (new Otp)->generate($notifiable->email , 'numeric' , 4 , 10);
+        return (new SendOtpMail($otp->token))->to($notifiable->email);
     }
 }

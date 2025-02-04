@@ -6,9 +6,12 @@ use App\Models\Book;
 use App\Models\Category;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class BookFilter extends Component
 {
+    use WithPagination;
+
     public $categories_id = [];
 
     #[Computed]
