@@ -24,7 +24,6 @@ class CartController extends Controller
         return view('website.cart',compact('books','cart'));
     }
     function addItem($book_id,Request $request)  {
-        dd($book_id,$request->quantity);
         $quantity = $request->has('quantity') ? $request->get('quantity') : 1;
         if(Auth::check()){
             AddToCart::updateOrCreate(['user_id' => Auth::id(),'book_id' => $book_id],[

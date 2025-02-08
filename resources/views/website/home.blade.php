@@ -91,7 +91,7 @@
     </div>
   </section>
   <section class="best_seller">
-    <div class="container">
+    <!-- <div class="container">
       <div class="best_seller-head">
         <h2>Best Seller</h2>
         <p>
@@ -130,7 +130,32 @@
           </li>
         </ul>
       </div>
-    </div>
+    </div> -->
+    <div class="container">
+  <div class="best_seller-head">
+    <h2>Best Seller</h2>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et
+      ultricies est. Aliquam in justo varius, sagittis neque ut, malesuada
+      leo.
+    </p>
+  </div>
+</div>
+
+<div id="splide-marquee" class="splide">
+  <div class="splide__track">
+    <ul class="splide__list">
+      @foreach ($bestSellingBooks as $book)
+        <li class="splide__slide">
+          <img src="{{ $book->getFirstMediaUrl('image') }}" alt="{{ $book->name }}" />
+          <p>{{ $book->name }}</p>
+          <p>{{ $book->total_quantity_sold }} sold</p>
+        </li>
+      @endforeach
+    </ul>
+  </div>
+</div>
+
     <div class="shop d-flex justify-content-center">
       <button class="main_btn shop_btn">Shop now</button>
     </div>
@@ -342,224 +367,72 @@
       </div>
     </div>
   </section>
-  <section class="books-sale">
-    <div class="container">
-      <div
-        class="d-flex flex-wrap justify-content-between align-items-center"
-      >
-        <div class="books-sale_head">
-          <h4>Flash Sale</h4>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris et
-            ultricies est. Aliquam in justo varius, sagittis neque ut,
-            malesuada leo.
-          </p>
-        </div>
-        <div class="counter">
-          <div class="timer">
-            <p>30:00:00</p>
-          </div>
-        </div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-12">
-          <div
-            class="splide d-flex p-0"
-            aria-label="Custom Arrows Example"
-            id="saleSlider"
-          >
-            <div class="splide__arrows">
-              <button class="splide__arrow splide__arrow--prev">
-                <i class="fa-solid fa-chevron-left"></i>
-              </button>
-              <button class="splide__arrow splide__arrow--next">
-                <i class="fa-solid fa-chevron-right"></i>
-              </button>
-            </div>
 
-            <div class="splide__track w-100 p-0">
-              <ul class="splide__list w-100">
-                <li class="splide__slide splide__slide-sale">
-                  <div class="books-sale_card w-100 p-4">
-                    <div class="books-sale_card__image w-50">
-                      <img src="./images/book-3.jpg" alt="book_image" />
+
+  <section class="flash-sale my-5 py-5 border-bottom">
+  <div class="container">
+    <p class="recommended_title mb-5">Flash Sale</p>
+    <div class="row g-4">
+
+      @foreach ($books as $book)
+        <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="recommended_card d-flex gap-4 p-4">
+            <div class="recomended_card__image">
+              <img src="{{ $book->getFirstMediaUrl('image') }}" alt="book image" class="w-100 h-100" />
+            </div>
+            <div class="d-flex flex-column gap-2">
+              <div class="recommended_card__content">
+                <h3>{{ $book->title }}</h3>
+                <p class="recommended_author">
+                  <span>Author:</span> {{ $book->author->name }}
+                </p>
+                <p class="recommended_description">
+                  {{ $book->description }}
+                </p>
+              </div>
+              <div class="recommended_card__rate d-flex flex-wrap justify-content-between align-items-center">
+                <div>
+                  <div class="stars d-flex gap-1">
+                    <div>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
+                      <i class="fa-solid fa-star"></i>
                     </div>
-                    <div class="d-flex flex-column w-100 gap-2">
-                      <div class="recommended_card__content">
-                        <h3 class="text-light">Rich Dad And Poor Dad</h3>
-                        <p class="recommended_author text-light">
-                          <span class="text-secondary">Author:</span> Robert
-                          T. Kiyosanki
-                        </p>
-                      </div>
-                      <div
-                        class="recommended_card__rate d-flex flex-wrap justify-content-between align-items-center"
-                      >
-                        <div>
-                          <div class="stars d-flex gap-1">
-                            <div>
-                              <i class="fa-solid fa-star"></i>
-                              <i class="fa-solid fa-star"></i>
-                              <i class="fa-solid fa-star"></i>
-                              <i class="fa-solid fa-star"></i>
-                              <i class="fa-solid fa-star text-secondary"></i>
-                            </div>
-                            <p class="review text-light">(180 Review)</p>
-                          </div>
-                          <p class="rate text-light">
-                            <span class="text-secondary"> Rate : </span> 4.2
-                          </p>
-                        </div>
-                      </div>
-                      <div class="d-flex align-items-center gap-2">
-                        <p class="sale_price">$45.00</p>
-                        <p class="main_price">$30.00</p>
-                      </div>
-                      <div class="range-container">
-                        <input
-                          type="range"
-                          id="progress"
-                          min="0"
-                          max="100"
-                          value="50"
-                          oninput="updateRangeColor(this)"
-                          readonly
-                        />
-                        <p class="mt-2 text-secondary">4 books left</p>
-                      </div>
-                      <div
-                        class="d-flex flex-wrap justify-content-end mt-auto"
-                      >
-                        <button class="main_btn">
-                          <i class="fa-solid fa-cart-shopping"></i>
-                        </button>
-                      </div>
-                    </div>
+                    <p class="review">(180 Reviews)</p>
                   </div>
-                </li>
-                <li class="splide__slide splide__slide-sale">
-                  <div class="books-sale_card w-100 p-4">
-                    <div class="books-sale_card__image w-50">
-                      <img src="./images/book-3.jpg" alt="book_image" />
-                    </div>
-                    <div class="d-flex flex-column w-100 gap-2">
-                      <div class="recommended_card__content">
-                        <h3 class="text-light">Rich Dad And Poor Dad</h3>
-                        <p class="recommended_author text-light">
-                          <span class="text-secondary">Author:</span> Robert
-                          T. Kiyosanki
-                        </p>
-                      </div>
-                      <div
-                        class="recommended_card__rate d-flex flex-wrap justify-content-between align-items-center"
-                      >
-                        <div>
-                          <div class="stars d-flex gap-1">
-                            <div>
-                              <i class="fa-solid fa-star"></i>
-                              <i class="fa-solid fa-star"></i>
-                              <i class="fa-solid fa-star"></i>
-                              <i class="fa-solid fa-star"></i>
-                              <i class="fa-solid fa-star text-secondary"></i>
-                            </div>
-                            <p class="review text-light">(180 Review)</p>
-                          </div>
-                          <p class="rate text-light">
-                            <span class="text-secondary"> Rate : </span> 4.2
-                          </p>
-                        </div>
-                      </div>
-                      <div class="d-flex align-items-center gap-2">
-                        <p class="sale_price">$45.00</p>
-                        <p class="main_price">$30.00</p>
-                      </div>
-                      <div class="range-container">
-                        <input
-                          type="range"
-                          id="progress"
-                          min="0"
-                          max="100"
-                          value="50"
-                          oninput="updateRangeColor(this)"
-                          readonly
-                        />
-                        <p class="mt-2 text-secondary">4 books left</p>
-                      </div>
-                      <div
-                        class="d-flex flex-wrap justify-content-end mt-auto"
-                      >
-                        <button class="main_btn">
-                          <i class="fa-solid fa-cart-shopping"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li class="splide__slide splide__slide-sale">
-                  <div class="books-sale_card w-100 p-4">
-                    <div class="books-sale_card__image w-50">
-                      <img src="./images/book-3.jpg" alt="book_image" />
-                    </div>
-                    <div class="d-flex flex-column w-100 gap-2">
-                      <div class="recommended_card__content">
-                        <h3 class="text-light">Rich Dad And Poor Dad</h3>
-                        <p class="recommended_author text-light">
-                          <span class="text-secondary">Author:</span> Robert
-                          T. Kiyosanki
-                        </p>
-                      </div>
-                      <div
-                        class="recommended_card__rate d-flex flex-wrap justify-content-between align-items-center"
-                      >
-                        <div>
-                          <div class="stars d-flex gap-1">
-                            <div>
-                              <i class="fa-solid fa-star"></i>
-                              <i class="fa-solid fa-star"></i>
-                              <i class="fa-solid fa-star"></i>
-                              <i class="fa-solid fa-star"></i>
-                              <i class="fa-solid fa-star text-secondary"></i>
-                            </div>
-                            <p class="review text-light">(180 Review)</p>
-                          </div>
-                          <p class="rate text-light">
-                            <span class="text-secondary"> Rate : </span> 4.2
-                          </p>
-                        </div>
-                      </div>
-                      <div class="d-flex align-items-center gap-2">
-                        <p class="sale_price">$45.00</p>
-                        <p class="main_price">$30.00</p>
-                      </div>
-                      <div class="range-container">
-                        <input
-                          type="range"
-                          id="progress"
-                          min="0"
-                          max="100"
-                          value="50"
-                          oninput="updateRangeColor(this)"
-                          readonly
-                        />
-                        <p class="mt-2 text-secondary">4 books left</p>
-                      </div>
-                      <div
-                        class="d-flex flex-wrap justify-content-end mt-auto"
-                      >
-                        <button class="main_btn">
-                          <i class="fa-solid fa-cart-shopping"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              </ul>
+                  <p class="rate"><span>Rate:</span> 4.2</p>
+                </div>
+                <div class="recommended_card__price">
+                  <p>${{ $book->price }}</p>
+                </div>
+              </div>
+
+              <div class="d-flex flex-wrap gap-3 mt-auto">
+                @if ($book->quantity)
+                  <form action="{{ route('cart.add', $book->id) }}" method="post">
+                    @csrf
+                    <button class="main_btn cart-btn">
+                      <span>Add To Cart</span>
+                      <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                  </form>
+                @else
+                  <p>Not Available</p>
+                @endif
+                @livewire('wish-list' , ['book' => $book])
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      @endforeach
     </div>
-  </section>
+  </div>
+</section>
+
+
+
 @endsection
 @push('js')
     <script src="./js/home.js"></script>

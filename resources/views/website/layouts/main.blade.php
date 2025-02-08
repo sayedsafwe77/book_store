@@ -66,7 +66,7 @@
                   <a
                     class="nav-link active"
                     aria-current="page"
-                    href="index.html"
+                    href="{{route('home')}}"
                     >Home</a
                   >
                 </li>

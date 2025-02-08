@@ -8,6 +8,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ForgetPasswordController;
 use App\Http\Controllers\ResetPasswordController;
+use App\InteractionTypesEnum;
+use App\Models\AddToCart;
+use App\Models\AddToFavorite;
+use App\Models\BookInteraction;
 
 Route::controller(HomeController::class)->group(function(){
     Route::get('/', 'getHomePage')->name('home');
@@ -45,3 +49,8 @@ Route::controller(CartController::class)->prefix('cart')->name('cart.')->group(f
     Route::delete('/{book_id}', 'removeItem')->name('remove');
 });
 
+Route::get('/test/enum',function(){
+
+    AddToCart::create(['book_id' => 1,'user_id' => 3,'quantity' => 2]);
+
+});

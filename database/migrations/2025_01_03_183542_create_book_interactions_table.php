@@ -19,6 +19,8 @@ return new class extends Migration
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->float('rate');
             $table->string('interaction_type');
+
+
             $table->timestamps();
         });
     }
