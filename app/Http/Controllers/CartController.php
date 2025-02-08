@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\AddToCart;
 use App\Models\Book;
+use App\Models\ShippingArea;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -11,20 +12,25 @@ use Illuminate\Support\Facades\Session;
 class CartController extends Controller
 {
     function index(){
+        $book_ids = [];
         if(Auth::check()){
             $cart = AddToCart::where('user_id',Auth::id())->get();
-            $book_ids = $cart->pluck('book_id')->toArray();
-            $cart = $cart->mapWithKeys(fn($item) => [ $item->book_id => $item->quantity ])->toArray();
+            if($cart){
+                $book_ids = $cart->pluck('book_id')->toArray();
+                $cart = $cart->mapWithKeys(fn($item) => [ $item->book_id => $item->quantity ])->toArray();
+            }
         }else{
             $cart = Session::get('cart',[]);
-            $book_ids = array_keys($cart);
-            $cart = collect($cart);
+            if($cart){
+                $book_ids = array_keys($cart);
+                $cart = collect($cart);
+            }
         }
         $books = Book::whereIn('id',$book_ids)->get();
-        return view('website.cart',compact('books','cart'));
+        $shipping_areas = ShippingArea::select('id','name','fee')->get();
+        return view('website.cart',compact('books','cart','shipping_areas'));
     }
     function addItem($book_id,Request $request)  {
-        dd($book_id,$request->quantity);
         $quantity = $request->has('quantity') ? $request->get('quantity') : 1;
         if(Auth::check()){
             AddToCart::updateOrCreate(['user_id' => Auth::id(),'book_id' => $book_id],[

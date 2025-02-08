@@ -8,6 +8,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ForgetPasswordController;
 use App\Http\Controllers\ResetPasswordController;
+use App\Models\AddToCart;
 
 Route::controller(HomeController::class)->group(function(){
     Route::get('/', 'getHomePage')->name('home');
@@ -45,3 +46,7 @@ Route::controller(CartController::class)->prefix('cart')->name('cart.')->group(f
     Route::delete('/{book_id}', 'removeItem')->name('remove');
 });
 
+
+Route::get('/test/new', function(){
+    AddToCart::create(['book_id' => 1,'user_id' => 1]);
+})->name('postRegister');

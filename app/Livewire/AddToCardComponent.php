@@ -2,33 +2,34 @@
 
 namespace App\Livewire;
 
-use App\Models\AddToCart;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
+
 use Livewire\Component;
+use Livewire\Attributes\On;
 
 class AddToCardComponent extends Component
 {
-    public $book;
-    public $quantity;
-    public function increment()  {
-        $this->quantity++;
-        $this->updateAddToCardQuantity(Auth::id(),$this->book->id,$this->quantity);
-    }
-    public function decrement()  {
-        if($this->quantity == 1) return;
-        $this->quantity--;
-        $this->updateAddToCardQuantity(Auth::id(),$this->book->id,$this->quantity);
-    }
+    public $books;
+    public $cart;
+    public $shipping_areas;
+    public $total;
 
-    private function updateAddToCardQuantity($user_id,$book_id,$quantity){
-        if($user_id){
-            AddToCart::where('user_id',Auth::id())->where('book_id',$book_id)->update(['quantity' => $quantity]);
-        }else{
-            $cart= Session::get('cart');
-            $cart[$book_id] = $quantity;
-            Session::put('cart');
-        }
+    function mount()  {
+        $this->calculateTotal();
+    }
+    function calculateTotal()  {
+        $this->total =0;
+        $this->books->each(fn($book) => $this->total += $book->price * $this->cart[$book->id]);
+    }
+    public function removeItem($book_id)
+    {
+        $this->books = $this->books->filter(fn($book) => $book->id != $book_id);
+        unset($this->cart[$book_id]);
+        $this->dispatch('removeItemFromChild', book_id: $book_id);
+    }
+    #[On('change-total')]
+    function total($bookId,$quantity)  {
+        $this->cart[$bookId] = $quantity;
+        $this->calculateTotal();
     }
     public function render()
     {
