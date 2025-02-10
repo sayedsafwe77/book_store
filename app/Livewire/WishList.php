@@ -3,7 +3,9 @@
 namespace App\Livewire;
 
 use App\Models\AddToFavorite;
+use App\Models\UserPrefrence;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class WishList extends Component
@@ -30,6 +32,13 @@ class WishList extends Component
                 'user_id' => Auth::id(),
                 'book_id' => $this->book->id,
             ]);
+            $preference = UserPrefrence::firstOrNew([
+                'user_id' => Auth::id(),
+                'category_id' => $this->book->category_id,
+                'author_id' => $this->book->author_id
+            ]);
+            $preference->number_of_interests = ($preference->number_of_interests ?? 0) + 1;
+            $preference->save();
         } else {
             $wishlist = session()->get('wishlist', []);
             if (!in_array($this->book->id, $wishlist)) {

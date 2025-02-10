@@ -9,4 +9,5 @@ class UserPrefrence extends Model
 {
     /** @use HasFactory<\Database\Factories\UserPrefrenceFactory> */
     use HasFactory;
+    protected $fillable = ['number_of_interests','user_id','category_id','author_id'];
 }

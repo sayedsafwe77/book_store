@@ -23,7 +23,7 @@ class Book extends Model implements HasMedia
         'name','description','slug','image','quantity','rate','publish_year','price','is_available','category_id','publisher_id','author_id','discountable_type','discountable_id'
     ];
 
-    protected $with = ['media'];
+    // protected $with = ['media'];
     //! 002 Set realtions
         //* 2.1
         public function author(){

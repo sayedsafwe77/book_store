@@ -287,6 +287,5 @@
 @endsection
 @push('js')
     <script src="./js/home.js"></script>
-    <script src="path-to-the-script/splide-extension-auto-scroll.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
 @endpush

@@ -12,6 +12,7 @@ use App\InteractionTypesEnum;
 use App\Models\AddToCart;
 use App\Models\AddToFavorite;
 use App\Models\BookInteraction;
+use Illuminate\Support\Facades\Cache;
 
 Route::controller(HomeController::class)->group(function(){
     Route::get('/', 'getHomePage')->name('home');
@@ -49,8 +50,7 @@ Route::controller(CartController::class)->prefix('cart')->name('cart.')->group(f
     Route::delete('/{book_id}', 'removeItem')->name('remove');
 });
 
-Route::get('/test/enum',function(){
-
-    AddToCart::create(['book_id' => 1,'user_id' => 3,'quantity' => 2]);
+Route::get('/test/cache',function(){
+    Cache::clear();
 
 });

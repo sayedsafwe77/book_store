@@ -12,6 +12,7 @@ use App\Http\Controllers\Dashboard\FlashSaleController;
 use App\Http\Controllers\Dashboard\PublisherController;
 use App\Http\Controllers\Dashboard\ImportExcelController;
 use App\Http\Controllers\Dashboard\BookController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -37,6 +38,14 @@ Route::middleware('dashboard')->group(function () {
     Route::post('/delete-items', [HomeController::class, 'bulkDelete'])->name('items.bulk-delete');
     Route::post('/import/excel', ImportExcelController::class)->name('import.excel');
     Route::get('/export/excel', ExportController::class)->name('export.excel');
+
+    Route::prefix('reports')->name('report.')->group(function(){
+        Route::prefix('sales')->name('sales.')->group(function(){
+            Route::get('/books', [ReportController::class,'books'])->name('books');
+            Route::get('/revenue', [ReportController::class,'revenue'])->name('revenue');
+            Route::get('/trends', [ReportController::class,'trends'])->name('trends');
+        });
+    });
 });
 
 

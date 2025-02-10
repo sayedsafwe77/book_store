@@ -477,7 +477,51 @@ return [
                 ],
             ]
         ],
-
+        [
+            'text' => 'Reports',
+            'url' => 'dashboard/reports',
+            'icon' => 'fas fa-book',
+            'submenu' => [
+                [
+                    'text' => 'Sales',
+                    'url' => 'dashboard/reports/sales/books',
+                    'icon' => 'fas fa-book',
+                    'submenu' => [
+                        [
+                            'text' => 'books',
+                            'url' => 'dashboard/reports/sales/books',
+                        ],
+                        [
+                            'text' => 'total revenue',
+                            'url' => 'dashboard/reports/sales/revenue',
+                        ],
+                        [
+                            'text' => 'sales trends over time',
+                            'url' => 'dashboard/reports/sales/trends',
+                        ],
+                    ]
+                ],
+                [
+                    'text' => 'Best Selling',
+                    'url' => 'dashboard/reports/best/selling/books',
+                    'icon' => 'fas fa-book',
+                    'submenu' => [
+                        [
+                            'text' => 'most books sold',
+                            'url' => 'dashboard/reports/best/selling/books',
+                        ],
+                        [
+                            'text' => 'most category sold',
+                            'url' => 'dashboard/reports/best/selling/category',
+                        ],
+                        [
+                            'text' => 'most author sold',
+                            'url' => 'dashboard/reports/best/selling/author',
+                        ],
+                    ]
+                ],
+            ]
+        ],
         // ['header' => 'account_settings'],
         // [
         //     'text' => 'profile',
@@ -616,12 +660,17 @@ return [
             ],
         ],
         'Chartjs' => [
-            'active' => false,
+            'active' => true,
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js',
+                    'asset' => true,
+                    'location' => 'vendor/chart.js/Chart.bundle.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/chart.js/Chart.min.css',
                 ],
             ],
         ],
