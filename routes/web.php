@@ -13,6 +13,10 @@ use App\Models\AddToCart;
 use App\Models\AddToFavorite;
 use App\Models\BookInteraction;
 use Illuminate\Support\Facades\Cache;
+use App\Http\Controllers\PaymentController;
+use App\Models\Book;
+use App\Models\FlashSale;
+use Illuminate\Support\Facades\Http;
 
 Route::controller(HomeController::class)->group(function(){
     Route::get('/', 'getHomePage')->name('home');
@@ -55,3 +59,5 @@ Route::get('/test/cache',function(){
     Cache::clear();
 
 });
+Route::get('/pay', [PaymentController::class, 'pay']);
+Route::get('/callback', [PaymentController::class, 'callback']);
