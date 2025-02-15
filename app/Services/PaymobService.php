@@ -23,7 +23,6 @@ class PaymobService
         $response = Http::post('https://accept.paymob.com/api/auth/tokens', [
             'api_key' => $this->apiKey,
         ]);
-
         return $response->json()['token'] ?? null;
     }
 
@@ -37,7 +36,6 @@ class PaymobService
             'currency' => 'EGP',
             'items' => [],
         ]);
-
         return $response->json();
     }
 
