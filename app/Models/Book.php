@@ -8,6 +8,7 @@ use App\Models\Author;
 use App\Models\Publisher;
 use App\Models\Category;
 use App\Observers\BookObserver;
+use App\Traits\FullTextSearch;
 use Carbon\Carbon;
 use EloquentFilter\Filterable;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
@@ -18,7 +19,13 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 class Book extends Model implements HasMedia
 {
     /** @use HasFactory<\Database\Factories\BookFactory> */
-    use HasFactory,InteractsWithMedia,Filterable;
+    use HasFactory,InteractsWithMedia,Filterable,FullTextSearch;
+
+    protected $searchable = [
+        'name',
+        'description'
+    ];
+
     public $fillable = [
         'name','description','slug','image','quantity','rate','publish_year','price','is_available','category_id','publisher_id','author_id','discountable_type','discountable_id'
     ];

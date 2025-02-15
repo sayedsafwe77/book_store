@@ -9,6 +9,7 @@ use App\Models\UserPrefrence;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -110,5 +111,61 @@ class HomeController extends Controller
     }
     private function getUserInterests($user_id){
         return BookInteraction::where('user_id', $user_id)->pluck('book_id');
+    }
+    function searchForBooks()  {
+        ['search' => $searchParam,'limit' => $limit] = request()->all();
+        $nameMatches = $this->searchForBooksByName($searchParam,$limit);
+        $nameMatches = $nameMatches->map(fn($book) => ['id' => $book->id,'text' => $book->name]);
+        $remainingCount = $limit - $nameMatches->count();
+        $match = collect([]);
+        if($remainingCount) {
+            $match = $this->searchForBooksByDescription($searchParam,$remainingCount);
+            $match = $match->map(function($book) use($searchParam){
+                $senetences = preg_split('/[.?,]|\s+--\s+/',$book->description);
+                foreach($senetences as $senetence){
+                    if(stripos($senetence,$searchParam) !== false){
+                        $book->text = $book->name . ' - ' . $senetence;
+                    }
+                }
+                return ['id' => $book->id , 'text'=> $book->text];
+            });
+        }
+        $books = $nameMatches->merge($match);
+        $remainingCount = $limit - $books->count();
+        if($remainingCount) {
+            $match = $this->searchForBooksByAuthorName($searchParam,$remainingCount);
+            $match = $match->map(fn($book) => ['id' => $book->id , 'text' => "$book->name By $book->author_name"]);
+        }
+        $books = $books->merge($match);
+        return $books;
+    }
+    private function searchForBooksByName($search,$limit){
+        return DB::table('books')
+        ->whereLike('name',"%$search%")
+        ->select('id','name')
+        ->limit($limit)
+        ->get();
+    }
+    private function searchForBooksByDescription($search,$count){
+        return DB::table('books')
+        ->whereLike('description',"%$search%")
+        ->select('id','name','description')
+        ->limit($count)
+        ->get();
+    }
+    private function searchForBooksByAuthorName($search,$count){
+        return DB::table('books')
+        ->join('authors','authors.id','=','books.author_id')
+        ->whereLike('authors.name',"%$search%")
+        ->selectRaw('books.id as id, books.name as name, authors.name as author_name')
+        ->limit($count)
+        ->get();
+    }
+
+
+    function searchForBooksUsingFulltext(){
+        ['search' => $searchParam,'limit' => $limit] = request()->all();
+        $books = Book::search($searchParam)->select('id','name','description')->limit($limit)->get();
+        return $books;
     }
 }

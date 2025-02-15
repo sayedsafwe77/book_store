@@ -19,6 +19,7 @@ Route::controller(HomeController::class)->group(function(){
     Route::get('/register', 'getRegisterPage')->name('register');
     Route::get('/login', 'getLoginPage')->name('login');
     Route::get('/books', 'getBooksPage')->name('book');
+    Route::get('/search', 'searchForBooksUsingFulltext')->name('book');
 });
 
 Route::controller(AuthController::class)->group(function () {
