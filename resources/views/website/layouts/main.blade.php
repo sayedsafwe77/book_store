@@ -41,161 +41,165 @@
   </head>
 
   <body>
-    <section class="hero-section">
-      <header>
-        <nav class="navbar navbar-expand-lg">
-          <div class="container">
-            <a class="navbar-brand" href="index.html">
-              <img src="./images/logo.png" alt="" />
-            </a>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <i class="fa-solid fa-bars text-light"></i>
-              <!-- <span class="navbar-toggler-icon "></span> -->
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <a
-                    class="nav-link active"
-                    aria-current="page"
-                    href="{{route('home')}}"
-                    >Home</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{{route('book')}}">Books</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="about.html">About us</a>
-                </li>
-              </ul>
-              <div class="profile d-flex gap-4 align-items-end">
-                @livewire('wish-list-counter')
-                <a href="{{route('cart.index')}}" class="cart-link">
-                  <span>1</span>
+    <div class="wrapper">
 
-                  <i class="fa-solid fa-cart-shopping fs-3"></i
-                ></a>
-                @auth
-                    <div class="dropdown">
-                        <button
-                            class="dropdown-toggle d-flex align-items-center border-0 profile_dropdown gap-2"
-                            type="button"
-                            id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                        >
-                            <div class="profile_image">
-                            <img
-                                src="./images/commentimage.jpeg"
-                                alt=""
-                                class="w-100 h-100"
-                            />
-                            </div>
-                            <div class="flex-column align-items-start">
-                            <p class="fs-6 fw-bold text-light text-start">
-                                Ahmed Fawzy
-                            </p>
-                            <p class="text-secondary">fawzy@gmail.com</p>
-                            </div>
-                        </button>
-                        <ul
-                            class="dropdown-menu"
-                            aria-labelledby="dropdownMenuButton1"
-                        >
-                            <li>
-                            <a class="dropdown-item" href="profile.html">Profile</a>
-                            </li>
-                            <li>
-                            <a class="dropdown-item" href="orders.html"
-                                >Order History</a
-                            >
-                            </li>
-                            <li>
-                            <a class="dropdown-item" href="{{route('logout')}}">Log Out</a>
-                            </li>
-                        </ul>
-                    </div>
-                @endauth
-
-              </div>
-              @guest
-                <div class="d-flex gap-3">
-                    <a class="main_btn login_btn" href="{{route('login')}}" type="button"
-                    >Log in</a
+        <section class="hero-section">
+        <header>
+            <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                <img src="./images/logo.png" alt="" />
+                </a>
+                <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+                >
+                <i class="fa-solid fa-bars text-light"></i>
+                <!-- <span class="navbar-toggler-icon "></span> -->
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                    <a
+                        class="nav-link active"
+                        aria-current="page"
+                        href="{{route('home')}}"
+                        >Home</a
                     >
-                    <a class="primary_btn" href="{{route('register')}}" type="button"
-                    >Sign Up
-                    </a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{route('book')}}">Books</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="about.html">About us</a>
+                    </li>
+                </ul>
+                <div class="profile d-flex gap-4 align-items-end">
+                    @livewire('wish-list-counter')
+                    <a href="{{route('cart.index')}}" class="cart-link">
+                    <span>1</span>
+
+                    <i class="fa-solid fa-cart-shopping fs-3"></i
+                    ></a>
+                    @auth
+                        <div class="dropdown">
+                            <button
+                                class="dropdown-toggle d-flex align-items-center border-0 profile_dropdown gap-2"
+                                type="button"
+                                id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                            >
+                                <div class="profile_image">
+                                <img
+                                    src="./images/commentimage.jpeg"
+                                    alt=""
+                                    class="w-100 h-100"
+                                />
+                                </div>
+                                <div class="flex-column align-items-start">
+                                <p class="fs-6 fw-bold text-light text-start">
+                                    Ahmed Fawzy
+                                </p>
+                                <p class="text-secondary">fawzy@gmail.com</p>
+                                </div>
+                            </button>
+                            <ul
+                                class="dropdown-menu"
+                                aria-labelledby="dropdownMenuButton1"
+                            >
+                                <li>
+                                <a class="dropdown-item" href="profile.html">Profile</a>
+                                </li>
+                                <li>
+                                <a class="dropdown-item" href="orders.html"
+                                    >Order History</a
+                                >
+                                </li>
+                                <li>
+                                <a class="dropdown-item" href="{{route('logout')}}">Log Out</a>
+                                </li>
+                            </ul>
+                        </div>
+                    @endauth
+
                 </div>
-              @endguest
+                @guest
+                    <div class="d-flex gap-3">
+                        <a class="main_btn login_btn" href="{{route('login')}}" type="button"
+                        >Log in</a
+                        >
+                        <a class="primary_btn" href="{{route('register')}}" type="button"
+                        >Sign Up
+                        </a>
+                    </div>
+                @endguest
 
 
 
+                </div>
             </div>
-          </div>
-        </nav>
-        <div class="overlay"></div>
-      </header>
-      @yield('hero_content')
-    </section>
+            </nav>
+            <div class="overlay"></div>
+        </header>
+        @yield('hero_content')
+        </section>
 
-    @yield('content')
-    <footer>
-      <div class="container">
-        <div
-          class="d-flex justify-content-between align-items-center border-bottom pb-4 flex-wrap gap-4"
-        >
-          <div class="d-flex gap-4 align-items-center">
-            <div class="logo_image">
-              <img src="./images/logo.png" alt="logo" />
+        @yield('content')
+        <footer>
+        <div class="container">
+            <div
+            class="d-flex justify-content-between align-items-center border-bottom pb-4 flex-wrap gap-4"
+            >
+            <div class="d-flex gap-4 align-items-center">
+                <div class="logo_image">
+                <img src="./images/logo.png" alt="logo" />
+                </div>
+                <div class="links_footer">
+                <ul class="d-flex gap-3 align-items-center p-0 m-0">
+                    <li><a href="index.html" class="nav-link.active">Home</a></li>
+                    <li><a href="index.html" class="nav-link.active">Books</a></li>
+                    <li>
+                    <a href="index.html" class="nav-link.active">About Us</a>
+                    </li>
+                </ul>
+                </div>
             </div>
-            <div class="links_footer">
-              <ul class="d-flex gap-3 align-items-center p-0 m-0">
-                <li><a href="index.html" class="nav-link.active">Home</a></li>
-                <li><a href="index.html" class="nav-link.active">Books</a></li>
-                <li>
-                  <a href="index.html" class="nav-link.active">About Us</a>
-                </li>
-              </ul>
+            <div class="social-icons d-flex gap-3">
+                <img src="images/face.png" alt="" />
+                <img src="images/insta.png" alt="" />
+                <img src="images/youtube.png" alt="" />
+                <img src="images/x.png" alt="" />
             </div>
-          </div>
-          <div class="social-icons d-flex gap-3">
-            <img src="images/face.png" alt="" />
-            <img src="images/insta.png" alt="" />
-            <img src="images/youtube.png" alt="" />
-            <img src="images/x.png" alt="" />
-          </div>
+            </div>
+            <div
+            class="d-flex justify-content-between align-items-center flex-wrap gap-4 pt-4"
+            >
+            <div>
+                <p class="text-light">
+                &lt; Developed By &gt; EraaSoft &lt; All Copy Rights Reserved @
+                2024
+                </p>
+            </div>
+            <div class="lang d-flex gap-3">
+                <img src="./images/lang.png" alt="" class="image_lang" />
+                <select name="lang" id="lang">
+                <option value="english" class="d-flex align-items-center">
+                    English
+                </option>
+                <option value="arabic">عربي</option>
+                </select>
+            </div>
+            </div>
         </div>
-        <div
-          class="d-flex justify-content-between align-items-center flex-wrap gap-4 pt-4"
-        >
-          <div>
-            <p class="text-light">
-              &lt; Developed By &gt; EraaSoft &lt; All Copy Rights Reserved @
-              2024
-            </p>
-          </div>
-          <div class="lang d-flex gap-3">
-            <img src="./images/lang.png" alt="" class="image_lang" />
-            <select name="lang" id="lang">
-              <option value="english" class="d-flex align-items-center">
-                English
-              </option>
-              <option value="arabic">عربي</option>
-            </select>
-          </div>
-        </div>
-      </div>
-    </footer>
+        </footer>
+    </div>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

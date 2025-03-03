@@ -6,4 +6,5 @@
 @endpush
 @section('content')
     @livewire('cart-page-component',['books' => $books,'cart' => $cart])
+
 @endsection

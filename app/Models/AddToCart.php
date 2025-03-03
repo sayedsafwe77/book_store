@@ -19,4 +19,7 @@ class AddToCart extends Model
     protected $table = 'book_interactions';
     protected $fillable = ['book_id','user_id','quantity','interaction_type'];
     protected $casts = ['interaction_type' => InteractionTypesEnum::class];
+    function book()  {
+        return $this->belongsTo(Book::class);
+    }
 }

@@ -41,16 +41,9 @@
         </div>
     </div>
     <div class="col-lg-1 col-md-4 col-sm-4 d-flex align-items-center">
-        <div class="fs-5 mt-3 del-item">
-            <form action="{{ route('cart.remove', $book->id) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button>
-                    <i class="fa-solid fa-trash-can main_text"></i>
-                    <p class="remove">Remove</p>
-                </button>
-            </form>
-
+        <div class="fs-5 mt-3 del-item" wire:click="removeItem">
+                <i class="fa-solid fa-trash-can main_text"></i>
+                <p class="remove">Remove</p>
         </div>
     </div>
 </div>

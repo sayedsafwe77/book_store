@@ -36,14 +36,5 @@ class CartController extends Controller
         }
         return redirect()->back()->with(['success' => 'book added to cart']);
     }
-    function removeItem($book_id)  {
-        if(Auth::check()){
-            AddToCart::where('user_id',Auth::id())->where('book_id',$book_id)->delete();
-        }else{
-            $cart = Session::get('cart',[]);
-            unset($cart[$book_id]);
-            Session::put('cart',$cart);
-        }
-        return redirect()->back()->with(['success' => 'book removed from cart']);
-    }
+
 }

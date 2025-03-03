@@ -74,5 +74,12 @@ class Book extends Model implements HasMedia
         }
 
 
-
+        function getPrice(){
+            return $this->price - $this->getDiscountValue();
+        }
+        function getDiscountValue(){
+            $discount = $this->getValidDiscount();
+            $discount_value= $discount?->percentage ?? 0;
+            return $this->price * ($discount_value / 100) ;
+        }
 }

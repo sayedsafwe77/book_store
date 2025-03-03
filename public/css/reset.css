@@ -1,5 +1,6 @@
 :root {
   --main-color: #d9176c;
+  --main-color-disabled: #985774;
   --primary-color: #3b2f4a;
   --bg-color: #f5f5f5;
   --text-white: #fff;
@@ -34,7 +35,16 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+}
 /* main background */
+/* .wrapper {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh; */
+/* } */
 
 .main_bg {
   background-color: var(--bg-color);
@@ -57,8 +67,22 @@ body {
   transition: 500ms;
   border: 1px solid transparent;
 }
-
-.main_btn:hover ,.main_btn.light  {
+/* .main_btn[disabled]{
+  background-color: var(--main-color-disabled);
+  color: #ffffff89;
+}
+.main_btn[disabled]:hover{
+    cursor: default;
+} */
+footer{
+    /* position: relative; */
+    /* width: 100%; */
+    /* top: 384px; */
+}
+.cart-header{
+    text-align: center;
+}
+.main_btn:not([disabled]):hover ,.main_btn.light  {
   background-color: #fff;
   color: var(--main-color);
   border: 1px solid var(--main-color);

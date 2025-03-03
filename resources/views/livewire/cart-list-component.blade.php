@@ -18,7 +18,7 @@
             @forelse ($books as $book)
                 @livewire('cart-item-component',['book' => $book,'quantity' => $cart[$book->id]],key($book->id))
             @empty
-                <h2>No items in cart</h2>
+                <h2 class="cart-header">No items in cart</h2>
             @endforelse
         </div>
     </div>

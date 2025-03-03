@@ -9,4 +9,5 @@ class UserAddress extends Model
 {
     /** @use HasFactory<\Database\Factories\UserAddressFactory> */
     use HasFactory;
+    protected $fillable = ['address','user_id'];
 }

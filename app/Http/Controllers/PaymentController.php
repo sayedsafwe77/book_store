@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Services\PaymobService;
 
@@ -21,7 +23,8 @@ class PaymentController extends Controller
         // Step 1: Get Auth Token
         $authToken = $this->paymobService->getAuthToken();
         // Step 2: Create Order
-        $order = $this->paymobService->createOrder($authToken, $amountCents);
+        $orderData = Order::where('number','091ABB53')->first();
+        $order = $this->paymobService->createOrder($authToken, $amountCents,$orderData);
 
         // Step 3: Generate Payment Key
         $billingData = [
@@ -36,11 +39,13 @@ class PaymentController extends Controller
             "floor" => "NA",
             "apartment" => "NA",
         ];
-        $paymentKey = $this->paymobService->getPaymentKey($authToken, $order['id'], $amountCents, $billingData);
+        $paymentKey = $this->paymobService->getPaymentKey($authToken, $order['id'], $amountCents, $billingData,$orderData);
 
         // Step 4: Redirect to Payment Page
         return redirect()->away($this->paymobService->getPaymentUrl($paymentKey['token']));
     }
+
+    // refundOrderUsingPaymob
 
     public function callback(Request $request)
     {
